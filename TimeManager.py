@@ -106,7 +106,8 @@ starting at 3pm  going until 4pm
 starting at 5pm  going until 8pm
 starting at 9pm  going until 2am
 starting at 5pm  going until 6pm
-starting at  going until
+
+starting at 5pm  going until 7pm
 starting at  going until
 """
 
