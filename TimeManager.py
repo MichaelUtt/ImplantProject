@@ -121,6 +121,7 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
 import sys
 import pymongo
 from datetime import date
+from mailmerge import MailMerge
 
 myclient = pymongo.MongoClient()
 mydb = myclient["reports"]
@@ -455,10 +456,7 @@ class CreateReport(QDialog):
 
         print('imagePath',self.imagePath)
 
-        from __future__ import print_function
         from mailmerge import MailMerge
-        from datetime import date
-
         template = "implant_report.docx"
 
         document = MailMerge(template)
