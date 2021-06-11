@@ -218,8 +218,7 @@ class HomePage(QDialog):
 class CreateReport(QDialog):
 
     def declareVars(self):
-        self.firstName = " "
-        self.lastName = " "
+        self.name = " "
         self.chartNumber = " "
         self.surgeonName = " "
         self.date = " "
@@ -260,30 +259,22 @@ class CreateReport(QDialog):
         patientGrid = QGridLayout()
         patientGrid.setAlignment(Qt.AlignBottom)
 
-        firstNameField = QLineEdit()
-        lastNameField = QLineEdit()
+        nameField = QLineEdit()
         chartNumberField = QLineEdit()
-        firstNameField.textChanged.connect(self.setFirstName)
-        lastNameField.textChanged.connect(self.setLastName)
+        nameField.textChanged.connect(self.setFirstName)
         chartNumberField.textChanged.connect(self.setChartNum)
-        patientGrid.addWidget(firstNameField, 2, 1)
-        patientGrid.addWidget(lastNameField, 2, 2)
+        patientGrid.addWidget(nameField, 2, 1)
         patientGrid.addWidget(chartNumberField, 2, 3)
 
-        firstNameLabel = QLabel()
-        lastNameLabel = QLabel()
+        nameLabel = QLabel()
         chartNumberLabel = QLabel()
-        firstNameLabel.setText("Patient First Name")
-        lastNameLabel.setText("Patient Last Name")
+        nameLabel.setText("Patient Name")
         chartNumberLabel.setText("Chart Number")
-        firstNameLabel.setBuddy(firstNameField)
-        lastNameLabel.setBuddy(lastNameField)
+        nameLabel.setBuddy(nameField)
         chartNumberLabel.setBuddy(chartNumberField)
-        firstNameLabel.setAlignment(Qt.AlignBottom)
-        lastNameLabel.setAlignment(Qt.AlignBottom)
+        nameLabel.setAlignment(Qt.AlignBottom)
         chartNumberLabel.setAlignment(Qt.AlignBottom)
-        patientGrid.addWidget(firstNameLabel, 1, 1)
-        patientGrid.addWidget(lastNameLabel, 1, 2)
+        patientGrid.addWidget(nameLabel, 1, 1)
         patientGrid.addWidget(chartNumberLabel, 1, 3)
 
         #patientGrid.setContentsMargins(0,0,200,0)
@@ -442,8 +433,7 @@ class CreateReport(QDialog):
 
     def save(self):
 
-        print('firstName',self.firstName)
-        print('lastName',self.lastName)
+        print('firstName',self.name)
         print('chartNumber',self.chartNumber)
         print('surgeonName',self.surgeonName)
         print('date',self.date)
@@ -465,9 +455,34 @@ class CreateReport(QDialog):
 
         print('imagePath',self.imagePath)
 
+        from __future__ import print_function
+        from mailmerge import MailMerge
+        from datetime import date
+
+        template = "implant_report.docx"
+
+        document = MailMerge(template)
+
+        document.merge(
+            patient=self.name,
+            chart=self.chartNumber,
+            surgeon=self.surgeonName,
+            date=self.date,
+            uncover_date=self.uncoverDate,
+            restore_date=self.restoreDate,
+            implant=self.implantType,
+            healing_cap=self.healingCapSize,
+            restorative_parts=self.restorativePartOrder,
+            report=self.report,
+            restore='',#self.restore,
+            anesthetic=self.anesthetic,
+            tolerance=self.tolerance,
+            prescriptions=self.rx)
+
+        document.write('test-output.docx')
+
         newReport = {
-            'firstName':self.firstName,
-            'lastName':self.lastName,
+            'name':self.name,
             'chartNumber':self.chartNumber,
             'surgeonName':self.surgeonName,
             'date':self.date,
@@ -489,19 +504,15 @@ class CreateReport(QDialog):
             'imagePath':self.imagePath
         }
 
-        x = mycol.insert_one(newReport)
-        print(x)
+
 
         #for x in mycol.find():
         #    print(x)
 
     def setFirstName(self, text):
 
-        self.firstName = text
+        self.name = text
 
-    def setLastName(self, text):
-
-        self.lastName = text
 
     def setChartNum(self, text):
 
