@@ -98,17 +98,10 @@ Notes:
 
 
 Time worked:
-1 hr prior
-starting at 8am  going until 9am
-starting at 7am  going until 8am
-starting at 10pm going until 2am
-starting at 3pm  going until 4pm
-starting at 5pm  going until 8pm
-starting at 9pm  going until 2am
-starting at 5pm  going until 6pm
+30 hours
+16 hours
 
-starting at 5pm  going until 7pm
-starting at  going until
+
 """
 
 from PyQt5.QtCore import QDateTime, Qt, QTimer
@@ -120,7 +113,7 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
                              QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog)
 import sys
 import pymongo
-from datetime import date
+#from datetime import date
 from mailmerge import MailMerge
 
 myclient = pymongo.MongoClient()
@@ -456,7 +449,7 @@ class CreateReport(QDialog):
 
         print('imagePath',self.imagePath)
 
-        from mailmerge import MailMerge
+
         template = "implant_report.docx"
 
         document = MailMerge(template)
@@ -479,28 +472,7 @@ class CreateReport(QDialog):
 
         document.write('test-output.docx')
 
-        newReport = {
-            'name':self.name,
-            'chartNumber':self.chartNumber,
-            'surgeonName':self.surgeonName,
-            'date':self.date,
-            'uncoverDate':self.uncoverDate,
-            'restoreDate':self.restoreDate,
 
-            'implantType':self.implantType,
-            'implantTooth':self.implantTooth,
-            'healingCapSize':self.healingCapSize,
-            'healingCapTooth':self.healingCapTooth,
-
-            'restorativePartOrder':self.restorativePartOrder,
-
-            "report":self.report,
-
-            'anesthetic':self.anesthetic,
-            'tolerance':self.tolerance,
-            'rx':self.rx,
-            'imagePath':self.imagePath
-        }
 
 
 
