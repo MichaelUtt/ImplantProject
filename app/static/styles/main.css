@@ -46,18 +46,18 @@ section {
     display: flex;
 }
 
-.selectorTop input {
+.select-text-field {
     width: 100%;
 }
 
-.selectorTop button {
-    width: 2em;
+.select-button {
+    width: 4em;
     height: 2em;
-    font-weight: 900;
+    font-weight: 700;
 }
 
-.selectorScrollBox {
-    margin-top: 0.5em;
+.select-checkbox {
+    margin: 0.5em 0 0.5em 0;
     border: solid #999;
     background: white;
     padding: 5px;
@@ -66,5 +66,49 @@ section {
     overflow: scroll;
 }
 
+.select-checkbox option {
+  background-color: "FFF";
+}
 
+.select-checkbox option:hover {
+  background-color: "CCC";
+}
+
+.select-checkbox option::before {
+  font-family: FontAwesome;
+  content: "\2610";
+  width: 1.3em;
+  display: inline-block;
+  margin-left: 2px;
+}
+.select-checkbox option:checked::before {
+  content: "\2611";
+}
+.remove_btn {
+  float: right;
+  height: 0.5em;
+  color: #A00;
+  background:none;
+  border: none;
+  font-weight: 400;
+}
+.remove_btn:hover {
+  color: #F00;
+  font-weight: 900;
+}
+
+.report-field {
+    width: 100%;
+    height: 10em;
+    max-width: 40em;
+}
+
+.restore-field {
+    width: 100%;
+    max-width: 40em;
+}
+
+#selectors {
+
+}
 

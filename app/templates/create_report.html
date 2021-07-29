@@ -1,62 +1,70 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Implant Report Helper</title>
-        <meta name="description" content="A program to help write implant reports.">
+{% extends "base.html" %}
 
-        <link rel= "stylesheet" href= "{{ url_for('static',filename='styles/main.css') }}">
-        <link rel= "stylesheet" href= "{{ url_for('static',filename='styles/navbar.css') }}">
+{% block content %}
 
+    <section>
+        <form>
 
-    </head>
-    <header>
-        <ul>
-            <li><img src="{{ url_for('static',filename='images/logo.png') }}"></li>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#view">View Reports</a></li>
-            <li><a href="#create">Create Report</a></li>
-            <li style="float:right"><a class="active" href="#about">Options</a></li>
-        </ul>
-    </header>
-    <body>
+            <b>
+                {{ form.name.label }}<br>
+                {{ form.name(size=32) }}<br>
+                {{ form.number.label }}<br>
+                {{ form.number(size=32) }}<br>
+                {{ form.doctor.label }}<br>
+                {{ form.doctor(size=32) }}<br>
+                {{ form.date.label }}<br>
+                {{ form.date(size=32) }}<br>
+                {{ form.uncoverdate.label }}<br>
+                {{ form.uncoverdate(size=32) }}<br>
+                {{ form.restoredate.label }}<br>
+                {{ form.restoredate(size=32) }}<br>
+            </b>
 
-    -->
-
-    {% extends "base.html" %}
-        <link rel= "stylesheet" href= '../static/styles/main.css'>
-        <link rel= "stylesheet" href= '../static/styles/navbar.css'>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type=text/javascript>
-                $(function() {
-                  $('a#test').on('click', function(e) {
-                    e.preventDefault()
-                    $.getJSON('/add_element',
-                        function(data) {
-                      //do nothing
-                    });
-                    return false;
-                  });
-                });
-        </script>
-        <section>
-            <form>
-                <label for="fname">First name:</label>
-                <input type="text" id="fname" name="fname">
+            <aside id="selectors">
                 <div class="itemSelector" >
-                    <p>Selector</p>
+                    <p><b>Implants</b></p>
+                    {{ form.implants(size=6, class_="select-checkbox") }}
                     <div class="selectorTop">
-                        <input type="text" id="selectedItem" name="selectedItem">
-                        <a href="#" id="test"><button type="button" title="Add" onclick="alert('Hello World!')">+</button></a>
-                        <button type="button" title="Remove" onclick="alert('Hello World!')">-</button>
-                    </div>
-                    <div class="selectorScrollBox">
-
+                        <input type="text" id="add_implant_text", class="select-text-field">
+                        <a href=# id="add_implant"><button type="submit" class='select-button'>Add</button></a>
                     </div>
                 </div>
-            </form>
 
-        </section>
-    {% endblock %}
+                <div class="itemSelector" >
+                    <p><b>Healing Caps</b></p>
+                    {{ form.healingcaps(size=6, class_="select-checkbox") }}
+                    <div class="selectorTop">
+                        <input type="text" id="add_cap_text", class="select-text-field">
+                        <a href=# id="add_cap"><button class='select-button'>Add</button></a>
+                    </div>
+                </div>
+
+                <div class="itemSelector" >
+                    <p><b>Restorative Parts</b></p>
+                    {{ form.restorativeparts(size=6, class_="select-checkbox") }}
+                    <div class="selectorTop">
+                        <input type="text" id="add_part_text", class="select-text-field">
+                        <a href=# id="add_part"><button class='select-button'>Add</button></a>
+                    </div>
+                </div>
+            </aside>
+
+            <b>
+                {{ form.details.label }}<br>
+                {{ form.details(class_="report-field") }}<br>
+                {{ form.restore.label }}<br>
+                {{ form.restore(class_="restore-field") }}<br>
+                {{ form.anesthetic.label }}<br>
+                {{ form.anesthetic(size=32) }}<br>
+                {{ form.tolerance.label }}<br>
+                {{ form.tolerance(size=32) }}<br>
+                {{ form.rx.label }}<br>
+                {{ form.rx(size=32) }}
+            </b>
+
+        </form>
+
+    </section>
+    <script type="text/javascript" src= "{{ url_for('static',filename='js/noRefresh.js') }}"></script>
+    <script type="text/javascript" src= "{{ url_for('static',filename='js/noCtrl.js') }}"></script>
+{% endblock %}
