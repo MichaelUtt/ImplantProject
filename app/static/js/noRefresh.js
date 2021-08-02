@@ -54,38 +54,42 @@ $(function() {
 
 $(function() {
     $('.remove_btn').bind('click', function() {
+
         var btnId = this.id;
 
         var btnIdSplice = btnId.split("-");
         var optVal = btnIdSplice[2];
         var optTable = btnIdSplice[1];
 
-        if (optTable == "implants") {
-            var implantOpts = document.querySelectorAll("ul#implants > li");
-            var old_implant = implantOpts[parseInt(optVal-1)].childNodes[2];
-            console.log(old_implant.innerHTML);
-            $.getJSON('/remove_implant/' + old_implant.innerHTML,
-                function() {
-                });
-            return false;
+        // Could likely just grab parent now instead of a query
+        var opts = document.querySelectorAll("ul#"+optTable+" > li");
+        var old_container = opts[parseInt(optVal-1)];
+        var old_val = old_container.childNodes[2];
 
-        } else if (optTable == "healingcaps") {
-            $.getJSON('/remove_cap/' + new_implant,
+        var r = confirm("Are you sure you want to delete "+old_val.innerHTML+"?");
+        if (!r) {
+            $.getJSON('/do_nothing',
                 function() {
                 });
             return false;
+        }
+
+        if (optTable == "implants") {
+
+            $.getJSON('/remove_implant/' + old_val.innerHTML,
+                function() {
+                });
+        } else if (optTable == "healingcaps") {
+            $.getJSON('/remove_cap/' + old_val.innerHTML,
+                function() {
+                });
 
         }  else if (optTable == "restorativeparts") {
-            $.getJSON('/remove_part/' + new_implant,
+            $.getJSON('/remove_part/' + old_val.innerHTML,
                 function() {
                 });
-            return false;
-
         }
-        var new_implant = "a";
-        $.getJSON('/add_implant/' + new_implant,
-            function() {
-        });
+        old_container.style.visibility = "hidden";
         return false;
 
     });
@@ -113,4 +117,18 @@ for (let i = 0; i < allOptions.length; i++) {
     //parentDiv.insertBefore(deleteOption, allOptions[i]);
 
 }
+
+$(function() {
+    $('#singleStage').bind('click', function() {
+        var uncoverDate = this.previousSibling.previousSibling;
+        var restoreDate = document.getElementById("restoreDate");
+        if (this.checked) {
+            uncoverDate.disabled = true;
+            restoreDate.disabled = true;
+        } else {
+            uncoverDate.disabled = false;
+            restoreDate.disabled = false;
+        }
+    });
+});
 

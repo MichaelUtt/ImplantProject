@@ -169,7 +169,7 @@ class HomePage(QDialog):
 
 
         self.setLayout(vbox)
-        
+
 
 
 
@@ -821,6 +821,6 @@ class WidgetGallery(QDialog):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    gallery = CreateReport()
+    gallery = WidgetGallery()
     gallery.show()
     sys.exit(app.exec_())

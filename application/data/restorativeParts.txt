@@ -1,0 +1,50 @@
+&Straumann 3.5, 3.7, 4.0, 4.5 diameter BLX
+Straumann RB closed tray impression coping (#065.4310)
+Straumann RB implant analog (#065.0021)
+&Straumann 5.0, 5.5, 6.5 diameter BLX
+Straumann WB closed tray impression coping (#065.4810)
+Straumann WB implant analog (#065.0022)
+
+&3.0 Nobel Active (Silver)
+NobelBiocare 3.6x13 closed tray impression coping (#36800)
+NobelBiocare 5.0x13 closed tray impression coping (#36800)
+NobelBiocare 3.5mm implant analog (#36791)
+&3.5 Nobel Replace CC (Pink)
+NobelBiocare 3.6x13 closed tray impression coping (#36538)
+NobelBiocare 5.0x13 closed tray impression coping (#36539)
+NobelBiocare 3.5mm implant analog (#36697)
+&4.3 and 5.0 Nobel Replace CC (Yellow)
+NobelBiocare 3.6x13 closed tray impression coping (#36541)
+NobelBiocare 5.0x13 closed tray impression coping (#36543)
+NobelBiocare 6.0x13 closed tray impression coping (#36545)
+NobelBiocare 4.3 and 5.0mm implant analog (#36698)
+&5.5 Nobel Parallel CC (Blue)
+NobelBiocare 5x13 closed tray impression coping (#37850)
+NobelBiocare 6.5.0x13 closed tray impression coping (#37852)
+NobelBiocare 5.5mm implant analog (#37879)
+&4.2 Nobel Pearl (White)
+NobelBiocare NobelPearl impression coping (#300720)
+NobelBiocare NobelPearl impression coping long (#300723)
+NobelBiocare NobelPearl implant analog (300729)
+5.5 Nobel Pearl (White)
+NobelBiocare NobelPearl impression coping (#300721)
+NobelBiocare NobelPearl impression coping long (#300724)
+NobelBiocare NobelPearl implant analog (#300730)
+
+&Zimmer 3.1mm restorative parts
+Zimmer 3.7x3mm impression coping (CITNP33)
+Zimmer 4.5x3mm impression coping (CITNP43)
+Zimmer 3.7x4.5mm impression coping (CITNP34)
+Zimmer 4.5x3mm impression coping (CITNP44)
+Zimmer NP analog (CIANP)
+
+Zimmer 3.7mm transfer abutment (available upon request)
+Zimmer 3.7mm implant analog (#IA3)
+
+Zimmer 4.7mm transfer abutment (available upon request)
+Zimmer 4.7mm implant analog (#IA4)
+
+Zimmer 5.7mm transfer abutment (available upon request)
+Zimmer 5.7mm implant analog (IA5)
+
+None.  You can take a direct impression of the Encode abutment.  Please contact Cole Bennet for details if you have any questions

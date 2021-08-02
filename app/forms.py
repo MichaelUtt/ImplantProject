@@ -4,7 +4,8 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Selec
     FormField, widgets
 from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
-from datetime import datetime
+import datetime
+from dateutil.relativedelta import relativedelta
 from app.databaseAccessors import getImplants, getCaps, getParts
 
 class MultiCheckboxField(SelectMultipleField):
@@ -33,12 +34,14 @@ class LoginForm(FlaskForm):
 
 
 class ReportForm(FlaskForm):
+    today = datetime.datetime.today()
     name = StringField('Patient Name')
     number = StringField('Chart #')
     doctor = StringField('Doctor')
-    date = DateField('Date', default=datetime.today())
-    uncoverdate = DateField('Uncover Date', default=datetime.today())
-    restoredate = DateField('Restore Date', default=datetime.today())
+    date = DateField('Date', default=today)
+    uncoverdate = DateField('Uncover Date', default=today+relativedelta(months=6))
+    singleStage = BooleanField('Single Stage', default=False)
+    restoredate = DateField('Restore Date', default=today+relativedelta(months=7), id='restoreDate')
 
     implants = MultiCheckboxField('OptionField', choices=getImplants())
 

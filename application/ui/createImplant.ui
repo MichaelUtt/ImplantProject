@@ -1,0 +1,1322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>722</width>
+    <height>592</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-131</y>
+         <width>685</width>
+         <height>2719</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="createPages">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="page1">
+           <attribute name="title">
+            <string>Implant 1</string>
+           </attribute>
+           <attribute name="toolTip">
+            <string>Implant 1</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="6" column="0">
+             <layout class="QGridLayout" name="bottomGrid">
+              <item row="2" column="0">
+               <widget class="QGroupBox" name="prescriptionsBox">
+                <property name="title">
+                 <string>Prescriptions</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_12">
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_3">
+                   <property name="text">
+                    <string>Amoxicillin 500mg; 30 caps; Take 1 cap tid til gone</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_9">
+                   <property name="text">
+                    <string>PenVK 500mg; 30 caps; Take 1 cap tid til gone</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_8">
+                   <property name="text">
+                    <string>Cephelexin 500mg; 32 caps; Take 1 cap qid til gone</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_7">
+                   <property name="text">
+                    <string>Clindamycin 300mg; 30 caps; Take 1 cap tid til gone</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_6">
+                   <property name="text">
+                    <string>Ibuprofen 600mg; 24 tabs; Take 1 tab q6h</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_5">
+                   <property name="text">
+                    <string>Norco-5; 24 tabs; Take 1 tab between doses of Ibuprofen prn pain</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCheckBox" name="checkBox_4">
+                   <property name="text">
+                    <string>Norco-5; 24 tabs; Take 1 tab q4-6h prn pain</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QGroupBox" name="toleranceBox">
+                <property name="title">
+                 <string>Patient Tolerance</string>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_50">
+                   <property name="text">
+                    <string>Excellent</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_53">
+                   <property name="text">
+                    <string>Good</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_52">
+                   <property name="text">
+                    <string>Fair</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_51">
+                   <property name="text">
+                    <string>Poor</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QGroupBox" name="anestheticBox">
+                <property name="title">
+                 <string>Anesthetic</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_46">
+                   <property name="text">
+                    <string>2% Xylocaine (1:100,000 epi)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_54">
+                   <property name="text">
+                    <string>2% Xylocaine (1:50,000 epi)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_49">
+                   <property name="text">
+                    <string>3% Mepivicaine</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_48">
+                   <property name="text">
+                    <string>2% Septicaine</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_47">
+                   <property name="text">
+                    <string>2% Marcaine</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="4" column="0">
+             <widget class="QScrollArea" name="restorativePartsScroll">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>192</height>
+               </size>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="restorativePartsScrollWidget">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>641</width>
+                 <height>190</height>
+                </rect>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_13">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <layout class="QVBoxLayout" name="restorativePartsList">
+                  <property name="sizeConstraint">
+                   <enum>QLayout::SetMinimumSize</enum>
+                  </property>
+                  <property name="leftMargin">
+                   <number>15</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>9</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>9</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>9</number>
+                  </property>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <layout class="QGridLayout" name="implantGrid" columnstretch="1,3">
+              <property name="leftMargin">
+               <number>8</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="horizontalSpacing">
+               <number>11</number>
+              </property>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>Expiration Date</string>
+                </property>
+                <property name="buddy">
+                 <cstring>expirationDate</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Lot Number</string>
+                </property>
+                <property name="buddy">
+                 <cstring>lotNumber</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_6">
+                <property name="text">
+                 <string>Tooth Number</string>
+                </property>
+                <property name="buddy">
+                 <cstring>toothNumber</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QDateEdit" name="expirationDate">
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="toothNumber"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="lotNumber"/>
+              </item>
+             </layout>
+            </item>
+            <item row="1" column="0">
+             <widget class="QScrollArea" name="scrollArea_2">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>192</height>
+               </size>
+              </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
+              <property name="widgetResizable">
+               <bool>true</bool>
+              </property>
+              <widget class="QWidget" name="scrollAreaWidgetContents_2">
+               <property name="geometry">
+                <rect>
+                 <x>0</x>
+                 <y>0</y>
+                 <width>641</width>
+                 <height>190</height>
+                </rect>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QTreeView" name="implantList">
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Plain</enum>
+                  </property>
+                  <property name="verticalScrollBarPolicy">
+                   <enum>Qt::ScrollBarAlwaysOn</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <layout class="QGridLayout" name="reportGrid">
+              <item row="21" column="0">
+               <widget class="QGroupBox" name="implantRestoreBox">
+                <property name="title">
+                 <string>Implant Restore</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_8">
+                 <property name="horizontalSpacing">
+                  <number>6</number>
+                 </property>
+                 <property name="verticalSpacing">
+                  <number>11</number>
+                 </property>
+                 <item row="3" column="0">
+                  <widget class="QRadioButton" name="radioButton_43">
+                   <property name="maximumSize">
+                    <size>
+                     <width>13</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QRadioButton" name="radioButton_44">
+                   <property name="maximumSize">
+                    <size>
+                     <width>13</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QLabel" name="label_11">
+                   <property name="text">
+                    <string>Implant can be restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QLabel" name="label_13">
+                   <property name="text">
+                    <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QRadioButton" name="radioButton_41">
+                   <property name="maximumSize">
+                    <size>
+                     <width>13</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QRadioButton" name="radioButton_42">
+                   <property name="maximumSize">
+                    <size>
+                     <width>13</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QRadioButton" name="radioButton_40">
+                   <property name="maximumSize">
+                    <size>
+                     <width>13</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QRadioButton" name="radioButton_45">
+                   <property name="maximumSize">
+                    <size>
+                     <width>13</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="2">
+                  <widget class="QLabel" name="label_14">
+                   <property name="text">
+                    <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="2">
+                  <widget class="QLabel" name="label_15">
+                   <property name="text">
+                    <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="2">
+                  <widget class="QLabel" name="label_16">
+                   <property name="text">
+                    <string>Implant can be uncovered after &lt;implant uncovery date&gt;  restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
+                   </property>
+                   <property name="wordWrap">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QGroupBox" name="incisionBox">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="title">
+                 <string>Incision</string>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,0,0,0,0">
+                 <item row="4" column="3">
+                  <widget class="QRadioButton" name="incisionButtion2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>A crestal incision was made distal of tooth/teeth #</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="4" alignment="Qt::AlignLeft">
+                  <widget class="QLineEdit" name="incisionEdit1">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>75</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="4">
+                  <widget class="QLineEdit" name="incisionEdit2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>75</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="3">
+                  <widget class="QRadioButton" name="incisionButton1">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>Sulcular incisions were made around tooth/teeth #</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QGroupBox" name="flapBox">
+                <property name="title">
+                 <string>Flap</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_2">
+                   <property name="text">
+                    <string>A full thickness flap was elevated.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_3">
+                   <property name="text">
+                    <string>Full thickness flaps were elevated.</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="9" column="0">
+               <widget class="QGroupBox" name="boneDensityBox">
+                <property name="title">
+                 <string>Bone Density</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_9">
+                   <property name="text">
+                    <string>Bone density was D1.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_12">
+                   <property name="text">
+                    <string>Bone density was D2.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_11">
+                   <property name="text">
+                    <string>Bone density was D3.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_10">
+                   <property name="text">
+                    <string>Bone density was D4.</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="16" column="0">
+               <widget class="QGroupBox" name="sinusBox">
+                <property name="title">
+                 <string>Sinus</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_18">
+                   <property name="text">
+                    <string>An osteotome sinus lift was performed.  There were no perforations.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_21">
+                   <property name="text">
+                    <string>An osteotome sinus lift was performed.  There was a perforation in the membrane.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_20">
+                   <property name="text">
+                    <string>A lateral window sinus graft was performed.  There were no perforations.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_19">
+                   <property name="text">
+                    <string>A lateral window sinus graft was perfored.  There was a perforation in the membrane.</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="11" column="0">
+               <widget class="QGroupBox" name="tappedBox">
+                <property name="title">
+                 <string>Tapped</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QCheckBox" name="checkBox">
+                   <property name="text">
+                    <string>The site was tapped.</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="10" column="0">
+               <widget class="QGroupBox" name="perforationsBox">
+                <property name="title">
+                 <string>Perforations</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_13">
+                   <property name="text">
+                    <string>There were no perforations.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_17">
+                   <property name="text">
+                    <string>There was a perforation into the sinus, but the membrane was intact.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_16">
+                   <property name="text">
+                    <string>There was a perforation into the sinus and the sinus membrane.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_15">
+                   <property name="text">
+                    <string>There was a perforation out the apical-buccal.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_14">
+                   <property name="text">
+                    <string>There was a complete exposure of the buccal wall.</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="8" column="0">
+               <widget class="QGroupBox" name="osteotomyBox">
+                <property name="title">
+                 <string>Osteotomy</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,0">
+                 <property name="sizeConstraint">
+                  <enum>QLayout::SetDefaultConstraint</enum>
+                 </property>
+                 <item row="5" column="0">
+                  <widget class="QRadioButton" name="osteotomyButton2">
+                   <property name="text">
+                    <string>An osteotomy was prepared in socket #</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QLineEdit" name="osteotomyEdit1">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>75</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QRadioButton" name="osteotomyButton1">
+                   <property name="text">
+                    <string>An osteotomy was prepared in site #</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="2">
+                  <widget class="QLineEdit" name="osteotomyEdit2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>75</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <widget class="QGroupBox" name="extractionBox">
+                <property name="title">
+                 <string>Extractions</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_9">
+                 <item row="3" column="0">
+                  <widget class="QRadioButton" name="radioButton_56">
+                   <property name="text">
+                    <string>The sockets was perfectly preserved</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QRadioButton" name="radioButton_55">
+                   <property name="text">
+                    <string>The sockets was well preserved</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="5" column="0">
+                  <widget class="QRadioButton" name="radioButton_57">
+                   <property name="text">
+                    <string>The sockets was moderately preserved</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="6" column="0">
+                  <widget class="QRadioButton" name="radioButton_58">
+                   <property name="text">
+                    <string>There was damage to the sockets</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_17">
+                   <property name="text">
+                    <string>Tooth/Teeth removed via forcep extraction</string>
+                   </property>
+                   <property name="buddy">
+                    <cstring>extractionEdit</cstring>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="extractionEdit"/>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="19" column="0">
+               <widget class="QGroupBox" name="healingCapBox">
+                <property name="title">
+                 <string>Healing Cap</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_7" columnminimumwidth="0,0,0,1">
+                 <item row="1" column="0" rowspan="2" colspan="4">
+                  <widget class="QRadioButton" name="healingCapButton1">
+                   <property name="text">
+                    <string>A cover screw was placed.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="0">
+                  <widget class="QRadioButton" name="healingCapButton2">
+                   <property name="text">
+                    <string>A &lt;healing cap size&gt; healing cap was placed for a single stage approach.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="4" column="1">
+                  <widget class="QLineEdit" name="healingCapEdit">
+                   <property name="maximumSize">
+                    <size>
+                     <width>75</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="1">
+                  <widget class="QLabel" name="healingCapEditLabel">
+                   <property name="text">
+                    <string>Healing Cap Size:</string>
+                   </property>
+                   <property name="buddy">
+                    <cstring>healingCapEdit</cstring>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="17" column="0">
+               <widget class="QGroupBox" name="implantSeatedBox">
+                <property name="title">
+                 <string>A &lt;implant type field&gt; implant was seated to depth.</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_8"/>
+               </widget>
+              </item>
+              <item row="18" column="0">
+               <widget class="QGroupBox" name="depthBox">
+                <property name="title">
+                 <string>Depth</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_22">
+                   <property name="text">
+                    <string>Implant had 2mm polished collar supra-crestal.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_28">
+                   <property name="text">
+                    <string>Implant had 1.5mm polished collar supra-crestal.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_27">
+                   <property name="text">
+                    <string>Implant had 1mm polished collar supra-crestal.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_26">
+                   <property name="text">
+                    <string>Implant had 0.5mm polished collar supra-crestal.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_25">
+                   <property name="text">
+                    <string>Implant was flush with bone.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_24">
+                   <property name="text">
+                    <string>Implant was flush with bone.</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QRadioButton" name="radioButton_23">
+                   <property name="text">
+                    <string>Implant was 1mm below the crest of bone.</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="20" column="0">
+               <widget class="QGroupBox" name="graftBox">
+                <property name="title">
+                 <string>Graft</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QGroupBox" name="groupBox_3">
+                   <property name="title">
+                    <string>Bone Material</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_9">
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_31">
+                      <property name="text">
+                       <string>Regeneros putty</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_34">
+                      <property name="text">
+                       <string>Puros (cancellous)</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_33">
+                      <property name="text">
+                       <string>Puros + Regeneros</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_32">
+                      <property name="text">
+                       <string>Regeneros</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QGroupBox" name="groupBox_2">
+                   <property name="title">
+                    <string>Membrane</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_10">
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_39">
+                      <property name="text">
+                       <string>Biomend</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_35">
+                      <property name="text">
+                       <string>Biomend Extend</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_36">
+                      <property name="text">
+                       <string>Copios</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_38">
+                      <property name="text">
+                       <string>Copios Extend</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radioButton_37">
+                      <property name="text">
+                       <string>Ti-reinforced PTFE</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="topGrid" rowstretch="0,0,0,0,0,0,0" columnstretch="1,2,1">
+              <property name="leftMargin">
+               <number>8</number>
+              </property>
+              <property name="topMargin">
+               <number>5</number>
+              </property>
+              <property name="horizontalSpacing">
+               <number>11</number>
+              </property>
+              <item row="5" column="2">
+               <widget class="QCheckBox" name="singleStage">
+                <property name="text">
+                 <string>Single Stage</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Chart Number</string>
+                </property>
+                <property name="buddy">
+                 <cstring>chartNumber</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QDateEdit" name="date">
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="1">
+               <widget class="QDateEdit" name="restoreDate">
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QDateEdit" name="uncoverDate">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Doctor</string>
+                </property>
+                <property name="buddy">
+                 <cstring>doctor</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Date</string>
+                </property>
+                <property name="buddy">
+                 <cstring>date</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Uncover Date</string>
+                </property>
+                <property name="buddy">
+                 <cstring>uncoverDate</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Patient Name</string>
+                </property>
+                <property name="buddy">
+                 <cstring>patientName</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="text">
+                 <string>Restore Date</string>
+                </property>
+                <property name="buddy">
+                 <cstring>restoreDate</cstring>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="chartNumber"/>
+              </item>
+              <item row="3" column="1">
+               <widget class="QComboBox" name="doctor"/>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="patientName"/>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>722</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHome">
+    <property name="title">
+     <string>Home</string>
+    </property>
+    <addaction name="actionCreate"/>
+   </widget>
+   <addaction name="menuHome"/>
+  </widget>
+  <action name="actionCreate">
+   <property name="text">
+    <string>Create</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>patientName</tabstop>
+  <tabstop>chartNumber</tabstop>
+  <tabstop>doctor</tabstop>
+  <tabstop>date</tabstop>
+  <tabstop>uncoverDate</tabstop>
+  <tabstop>singleStage</tabstop>
+  <tabstop>restoreDate</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

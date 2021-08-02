@@ -40,7 +40,6 @@ def add_implant(new_implant=""):
 @app.route('/remove_implant/<old_implant>')
 def remove_implant(old_implant=""):
     i = Implant.query.filter_by(data=old_implant).first()
-    print(i)
     db.session.delete(i)
     db.session.commit()
     print("Removing: " + old_implant)
@@ -54,12 +53,32 @@ def add_cap(new_cap=""):
     print("Committing: " + new_cap)
     return "nothing"
 
+@app.route('/remove_cap/<old_cap>')
+def remove_cap(old_cap=""):
+    c = Caps.query.filter_by(data=old_cap).first()
+    db.session.delete(c)
+    db.session.commit()
+    print("Removing: " + old_cap)
+    return "nothing"
+
 @app.route('/add_part/<new_part>')
 def add_part(new_part=""):
     p = RestorativeParts(data=new_part)
     db.session.add(p)
     db.session.commit()
     print("Committing: " + new_part)
+    return "nothing"
+
+@app.route('/remove_part/<old_part>')
+def remove_part(old_part=""):
+    p = Caps.query.filter_by(data=old_part).first()
+    db.session.delete(p)
+    db.session.commit()
+    print("Removing: " + old_part)
+    return "nothing"
+
+@app.route('/do_nothing')
+def do_nothing():
     return "nothing"
 
 def add_report():

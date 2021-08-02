@@ -15,7 +15,11 @@
                 {{ form.date.label }}<br>
                 {{ form.date(size=32) }}<br>
                 {{ form.uncoverdate.label }}<br>
-                {{ form.uncoverdate(size=32) }}<br>
+                <div display="flex">
+                    {{ form.uncoverdate(size=32) }}
+                    {{ form.singleStage }}
+                    {{ form.singleStage.label }}<br>
+                </div>
                 {{ form.restoredate.label }}<br>
                 {{ form.restoredate(size=32) }}<br>
             </b>
