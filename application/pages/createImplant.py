@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate, QSize
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap
+from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
                              QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
                              QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
@@ -18,6 +18,7 @@ class ImplantPage(QWidget):
         uic.loadUi('ui/addImplant.ui', self)
 
         self.setWindowTitle("Implants")
+        self.setWindowIcon(QIcon('data/favicon.ico'))
 
         self.setWindowFlags(
             Qt.Window |

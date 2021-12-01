@@ -1,7 +1,7 @@
 import os
 
 from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap
+from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
                              QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
                              QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
@@ -17,17 +17,13 @@ from PyQt5 import uic
 import json
 
 
-allDoctors = ["David Engen", "Add new Doctor"]
-allImplants = ["Select Implant", "Implant 1", "Implant 2"]
-allAnesthetics = ["None", "New Anesthetic", "Anesthetic 1"]
-allPrescriptions = ["None", "New Prescription", "Prescription 1"]
-
-
-
 class CreateReportPage(QMainWindow):
     def __init__(self):
         super(CreateReportPage, self).__init__()
         uic.loadUi('ui/createImplant.ui', self)
+
+        self.setWindowTitle('Create Report')
+        self.setWindowIcon(QIcon('data/favicon.ico'))
 
         self.patientName = self.findChild(QLineEdit, 'patientName')
         self.chartNumber = self.findChild(QLineEdit, 'chartNumber')
@@ -35,7 +31,7 @@ class CreateReportPage(QMainWindow):
         #for doctorIndex in [1,2,3]:
         #    self.findChild(QRadioButton, "doctor"+str(doctorIndex)).clicked.connect(self.doctorChanged)
         self.doctorBox = self.findChild(QVBoxLayout, "doctorBox")
-        print(self.doctorBox)
+        #print(self.doctorBox)
 
         #self.doctorBox.setExclusive(True)
         self.createDoctors()
@@ -65,6 +61,7 @@ class CreateReportPage(QMainWindow):
 
         self.xrayButton = self.findChild(QPushButton, 'addXray')
         self.xrayButton.clicked.connect(self.getXrayPath)
+        self.xrayPath = 'data/noImage.jpg'
 
         self.addImplantButtonYes = self.findChild(QPushButton, 'addImplantYes')
         self.addImplantButtonYes.clicked.connect(self.addImplantTab)
@@ -109,10 +106,24 @@ class CreateReportPage(QMainWindow):
             opt.setText(txt)
 
     def getXrayPath(self):
+        with open("data/fileLocations.txt", "r") as content:
+            lines = content.readlines()
+
+        lastDir = " "
+        if len(lines[1]) > 6:
+            lastDir = lines[1][6:]
+        # print(lastDir)
+
         fname = QFileDialog.getOpenFileName(self, 'Open X-Ray',
-                                            '', "Image files (*.jpg *.jpeg)")
+                                            lastDir, "Image files (*.jpg *.jpeg)")
+        if len(fname[0]) < 2:
+            return
         self.xrayPath = fname[0]
         self.findChild(QLabel, 'xrayPath').setText("File Path: "+fname[0])
+
+        with open("data/fileLocations.txt", "w") as content:
+            content.write(lines[0])
+            content.write("xrays="+os.path.dirname(fname[0]))
 
 
 
@@ -145,7 +156,6 @@ class CreateReportPage(QMainWindow):
                 d.setObjectName("doctor" + str(i))
                 d.clicked.connect(self.doctorChanged)
                 docLayout.addWidget(d)
-                print(d.autoExclusive())
                 i += 1
             docGroup.setLayout(docLayout)
             self.doctorBox.addWidget(docGroup)
@@ -165,7 +175,7 @@ class CreateReportPage(QMainWindow):
 
 
     def getTabName(self, pageNum):
-        return (self.doctor.split()[0]+"-Implant-"+str(pageNum)+"-"+self.date.text())
+        return (self.doctor.split()[0]+"_Implant_"+str(pageNum))
 
     def getRestore(self):
         options = self.implantRestoreBox.findChildren(QRadioButton)
@@ -244,14 +254,19 @@ class CreateReportPage(QMainWindow):
         #xray = "C:\\PythonProjects\\ImplantApp\\app\\static\\images\\exampleXray.jpeg"
         document.write('temp.docx')
         doc = Document('temp.docx')
+        if self.xrayPath != None:
 
-        tables = doc.tables
+            tables = doc.tables
 
-        p = tables[0].rows[0].cells[0].add_paragraph()
-        r = p.add_run()
-        r.add_picture('C:\\PythonProjects\\ImplantApp\\app\\static\\images\\exampleXray.jpeg', width=Inches(2.5))
+            p = tables[0].rows[0].cells[0].add_paragraph()
+            r = p.add_run()
+            r.add_picture(self.xrayPath, width=Inches(2.5), height=Inches(2.5))
 
-        doc.save('test4.docx')
+        with open("data/fileLocations.txt", "r") as content:
+            lines = content.readlines()
+        dir = lines[0][8:]
+        doc.save('test5.docx')
+
         os.remove('temp.docx')
 
 
@@ -271,6 +286,7 @@ class NewImplantForm(QWidget):
         self.toothNumber = self.findChild(QLineEdit, 'toothNumber')
         self.lotNumber = self.findChild(QLineEdit, 'lotNumber')
         self.expirationDate = self.findChild(QDateEdit, 'expirationDate')
+        self.expirationDate.setDate(QDate.currentDate())
 
         self.restorativePartsList = self.findChild(QVBoxLayout, 'restorativePartsList')
         self.fillRestorativeParts()

@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate, QSize, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap
+from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
                              QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
                              QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
@@ -24,6 +24,7 @@ class DoctorPage(QWidget):
         super(DoctorPage, self).__init__()
 
         self.setWindowTitle("Doctors")
+        self.setWindowIcon(QIcon('data/favicon.ico'))
 
         self.setWindowFlags(
             Qt.Window |

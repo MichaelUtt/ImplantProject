@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap
+from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
 from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
                              QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
                              QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
@@ -7,17 +7,19 @@ from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
                              QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog, QScrollArea,
                              QMainWindow, QTreeView)
 from PyQt5.Qt import QStandardItemModel, QStandardItem
-from application.pages import home
 from mailmerge import MailMerge
 from PyQt5 import uic
 import json
 
-from application.pages import createReport, home, createImplant, createDoctor, createPart
+from application.pages import createReport, createImplant, createDoctor, createPart, viewAllReports
 
 class HomePage(QMainWindow):
     def __init__(self):
         super(HomePage, self).__init__()
         uic.loadUi('ui/home.ui', self)
+
+        self.setWindowTitle('Implant Report Maker')
+        self.setWindowIcon(QIcon('data/favicon.ico'))
 
         # TODO maybe
         #self.findChild(QPushButton, "viewReports").setHidden(True)
@@ -34,9 +36,13 @@ class HomePage(QMainWindow):
         self.createDoctorButton.clicked.connect(self.createDoctorPage)
         self.viewReportsButton = self.findChild(QPushButton, "viewReports")
         self.viewReportsButton.clicked.connect(self.viewReportsPage)
+        self.defaultFolderButton = self.findChild(QPushButton, "defaultFolderButton")
+        self.defaultFolderButton.clicked.connect(self.setDefaultFolder)
         self.closeButton = self.findChild(QPushButton, "closeButton")
         self.closeButton.clicked.connect(self.closeApp)
 
+        self.viewPage = viewAllReports.ViewPage()
+        self.viewPage.hide()
         self.implantPage = createImplant.ImplantPage()
         self.implantPage.hide()
         self.partPage = createPart.PartPage()
@@ -75,5 +81,11 @@ class HomePage(QMainWindow):
             self.doctorPage.hide()
 
     def viewReportsPage(self):
-        pass
+        if not self.viewPage.isVisible():
+            self.viewPage.show()
+            self.viewPage.generateTable()
+        else:
+            self.viewPage.hide()
 
+    def setDefaultFolder(self):
+        pass

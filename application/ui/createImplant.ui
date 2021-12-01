@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -45,7 +48,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-180</y>
+         <y>-408</y>
          <width>805</width>
          <height>1078</height>
         </rect>
@@ -614,7 +617,7 @@
           <item row="5" column="0">
            <widget class="QLabel" name="xrayPath">
             <property name="text">
-             <string>File Path: </string>
+             <string>File Path: No Image Selected</string>
             </property>
            </widget>
           </item>
