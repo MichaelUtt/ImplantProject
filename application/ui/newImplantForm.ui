@@ -18,9 +18,9 @@
     <widget class="QWidget" name="newImplantWidget" native="true">
      <layout class="QVBoxLayout" name="newImplantLayout" stretch="0,0,0,0,0,0,1">
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="implantBoxLabel">
         <property name="text">
-         <string>Implant</string>
+         <string>Implant: None</string>
         </property>
        </widget>
       </item>
@@ -102,7 +102,7 @@
        </widget>
       </item>
       <item>
-       <layout class="QGridLayout" name="implantGrid" columnstretch="1,0">
+       <layout class="QGridLayout" name="implantGrid" columnstretch="0,0">
         <property name="leftMargin">
          <number>8</number>
         </property>
@@ -116,13 +116,6 @@
          <widget class="QLabel" name="label_9">
           <property name="text">
            <string>Expiration Date</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_8">
-          <property name="text">
-           <string>Lot Number</string>
           </property>
          </widget>
         </item>
@@ -140,16 +133,23 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="lotNumber"/>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Lot Number</string>
+          </property>
+         </widget>
         </item>
         <item row="0" column="1">
          <widget class="QLineEdit" name="toothNumber"/>
         </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="lotNumber"/>
+        </item>
        </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="restorativePartsBoxLabel">
         <property name="text">
          <string>Restorative Parts</string>
         </property>
@@ -240,14 +240,14 @@
            <item>
             <widget class="QRadioButton" name="radioButton_2">
              <property name="text">
-              <string>A full thickness flap was elevated.</string>
+              <string>A full thickness flap was elevated. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_3">
              <property name="text">
-              <string>Full thickness flaps were elevated.</string>
+              <string>Full thickness flaps were elevated. </string>
              </property>
             </widget>
            </item>
@@ -269,28 +269,28 @@
            <item>
             <widget class="QRadioButton" name="radioButton_18">
              <property name="text">
-              <string>An osteotome sinus lift was performed.  There were no perforations.</string>
+              <string>An osteotome sinus lift was performed.  There were no perforations. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_21">
              <property name="text">
-              <string>An osteotome sinus lift was performed.  There was a perforation in the membrane.</string>
+              <string>An osteotome sinus lift was performed.  There was a perforation in the membrane. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_20">
              <property name="text">
-              <string>A lateral window sinus graft was performed.  There were no perforations.</string>
+              <string>A lateral window sinus graft was performed.  There were no perforations. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_19">
              <property name="text">
-              <string>A lateral window sinus graft was perfored.  There was a perforation in the membrane.</string>
+              <string>A lateral window sinus graft was perfored.  There was a perforation in the membrane. </string>
              </property>
             </widget>
            </item>
@@ -300,7 +300,7 @@
         <item row="6" column="0">
          <widget class="QGroupBox" name="tappedBox">
           <property name="title">
-           <string>The site was tapped</string>
+           <string>The site was tapped. </string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -314,7 +314,7 @@
         <item row="8" column="0">
          <widget class="QGroupBox" name="implantSeatedBox">
           <property name="title">
-           <string>A &lt;implant type field&gt; implant was seated to depth.</string>
+           <string>A &lt;implant type field&gt; implant was seated to depth. </string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -345,36 +345,7 @@
           <property name="checked">
            <bool>false</bool>
           </property>
-          <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,0,0,0,0">
-           <item row="3" column="4">
-            <widget class="QLineEdit" name="incisionEdit1">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>75</width>
-               <height>16777215</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="QRadioButton" name="incisionButtion2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>A crestal incision was made distal of tooth/teeth #</string>
-             </property>
-            </widget>
-           </item>
+          <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,0,0,0,0,1">
            <item row="4" column="4">
             <widget class="QLineEdit" name="incisionEdit2">
              <property name="sizePolicy">
@@ -404,6 +375,42 @@
              </property>
             </widget>
            </item>
+           <item row="4" column="3">
+            <widget class="QRadioButton" name="incisionButton2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>A crestal incision was made distal of tooth/teeth #</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="4">
+            <widget class="QLineEdit" name="incisionEdit1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="5">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -420,30 +427,30 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_9">
            <item row="3" column="0">
-            <widget class="QRadioButton" name="radioButton_56">
+            <widget class="QRadioButton" name="extractionButton1">
              <property name="text">
-              <string>The sockets was perfectly preserved</string>
+              <string>The sockets was perfectly preserved. </string>
              </property>
             </widget>
            </item>
            <item row="6" column="0">
-            <widget class="QRadioButton" name="radioButton_58">
+            <widget class="QRadioButton" name="extractionButton4">
              <property name="text">
-              <string>There was damage to the sockets</string>
+              <string>There was damage to the sockets. </string>
              </property>
             </widget>
            </item>
            <item row="4" column="0">
-            <widget class="QRadioButton" name="radioButton_55">
+            <widget class="QRadioButton" name="extractionButton2">
              <property name="text">
-              <string>The sockets was well preserved</string>
+              <string>The sockets was well preserved. </string>
              </property>
             </widget>
            </item>
            <item row="5" column="0">
-            <widget class="QRadioButton" name="radioButton_57">
+            <widget class="QRadioButton" name="extractionButton3">
              <property name="text">
-              <string>The sockets was moderately preserved</string>
+              <string>The sockets was moderately preserved. </string>
              </property>
             </widget>
            </item>
@@ -471,10 +478,17 @@
           <property name="checked">
            <bool>false</bool>
           </property>
-          <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,0">
+          <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,0,1">
            <property name="sizeConstraint">
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="osteotomyButton1">
+             <property name="text">
+              <string>An osteotomy was prepared in site #</string>
+             </property>
+            </widget>
+           </item>
            <item row="5" column="2">
             <widget class="QLineEdit" name="osteotomyEdit2">
              <property name="sizePolicy">
@@ -491,20 +505,6 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QRadioButton" name="osteotomyButton1">
-             <property name="text">
-              <string>An osteotomy was prepared in site #</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QRadioButton" name="osteotomyButton2">
-             <property name="text">
-              <string>An osteotomy was prepared in socket #</string>
-             </property>
-            </widget>
-           </item>
            <item row="0" column="2">
             <widget class="QLineEdit" name="osteotomyEdit1">
              <property name="sizePolicy">
@@ -518,6 +518,20 @@
                <width>75</width>
                <height>16777215</height>
               </size>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QRadioButton" name="osteotomyButton2">
+             <property name="text">
+              <string>An osteotomy was prepared in socket #</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -539,35 +553,35 @@
            <item>
             <widget class="QRadioButton" name="radioButton_13">
              <property name="text">
-              <string>There were no perforations.</string>
+              <string>There were no perforations. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_17">
              <property name="text">
-              <string>There was a perforation into the sinus, but the membrane was intact.</string>
+              <string>There was a perforation into the sinus, but the membrane was intact. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_16">
              <property name="text">
-              <string>There was a perforation into the sinus and the sinus membrane.</string>
+              <string>There was a perforation into the sinus and the sinus membrane. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_15">
              <property name="text">
-              <string>There was a perforation out the apical-buccal.</string>
+              <string>There was a perforation out the apical-buccal. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_14">
              <property name="text">
-              <string>There was a complete exposure of the buccal wall.</string>
+              <string>There was a complete exposure of the buccal wall. </string>
              </property>
             </widget>
            </item>
@@ -589,83 +603,28 @@
            <item>
             <widget class="QRadioButton" name="radioButton_9">
              <property name="text">
-              <string>Bone density was D1.</string>
+              <string>Bone density was D1. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_12">
              <property name="text">
-              <string>Bone density was D2.</string>
+              <string>Bone density was D2. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_11">
              <property name="text">
-              <string>Bone density was D3.</string>
+              <string>Bone density was D3. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_10">
              <property name="text">
-              <string>Bone density was D4.</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="10" column="0">
-         <widget class="QGroupBox" name="healingCapBox">
-          <property name="title">
-           <string>Healing Cap</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="checked">
-           <bool>false</bool>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0">
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="healingCapEdit">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>75</width>
-               <height>16777215</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QRadioButton" name="healingCapButton2">
-             <property name="text">
-              <string>A  healing cap was placed for a single stage approach.</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="healingCapEditLabel">
-             <property name="text">
-              <string>Healing Cap Size:</string>
-             </property>
-             <property name="buddy">
-              <cstring>healingCapEdit</cstring>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QRadioButton" name="healingCapButton1">
-             <property name="text">
-              <string>A cover screw was placed.</string>
+              <string>Bone density was D4. </string>
              </property>
             </widget>
            </item>
@@ -687,49 +646,49 @@
            <item>
             <widget class="QRadioButton" name="radioButton_22">
              <property name="text">
-              <string>Implant had 2mm polished collar supra-crestal.</string>
+              <string>Implant had 2mm polished collar supra-crestal. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_28">
              <property name="text">
-              <string>Implant had 1.5mm polished collar supra-crestal.</string>
+              <string>Implant had 1.5mm polished collar supra-crestal. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_27">
              <property name="text">
-              <string>Implant had 1mm polished collar supra-crestal.</string>
+              <string>Implant had 1mm polished collar supra-crestal. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_26">
              <property name="text">
-              <string>Implant had 0.5mm polished collar supra-crestal.</string>
+              <string>Implant had 0.5mm polished collar supra-crestal. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_25">
              <property name="text">
-              <string>Implant was flush with bone.</string>
+              <string>Implant was flush with bone. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_24">
              <property name="text">
-              <string>Implant was flush with bone.</string>
+              <string>Implant was flush with bone. </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_23">
              <property name="text">
-              <string>Implant was 1mm below the crest of bone.</string>
+              <string>Implant was 1mm below the crest of bone. </string>
              </property>
             </widget>
            </item>
@@ -749,7 +708,7 @@
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QGroupBox" name="groupBox_3">
+            <widget class="QGroupBox" name="boneMaterialBox">
              <property name="title">
               <string>Bone Material</string>
              </property>
@@ -786,7 +745,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QGroupBox" name="groupBox_2">
+            <widget class="QGroupBox" name="boneMembraneBox">
              <property name="title">
               <string>Membrane</string>
              </property>
@@ -832,6 +791,74 @@
           </layout>
          </widget>
         </item>
+        <item row="10" column="0">
+         <widget class="QGroupBox" name="healingCapBox">
+          <property name="title">
+           <string>Healing Cap</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0,0">
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="healingCapEdit">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>75</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QRadioButton" name="healingCapButton2">
+             <property name="text">
+              <string>A  healing cap was placed for a single stage approach. </string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="healingCapButton1">
+             <property name="text">
+              <string>A cover screw was placed. </string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="healingCapEditLabel">
+             <property name="text">
+              <string>Healing Cap Size:</string>
+             </property>
+             <property name="buddy">
+              <cstring>healingCapEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
@@ -850,5 +877,342 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>healingCapButton1</sender>
+   <signal>pressed()</signal>
+   <receiver>healingCapEditLabel</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>1644</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>1637</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>healingCapButton1</sender>
+   <signal>pressed()</signal>
+   <receiver>healingCapEdit</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>1639</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>355</x>
+     <y>1666</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>healingCapButton2</sender>
+   <signal>pressed()</signal>
+   <receiver>healingCapEditLabel</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>1662</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>1643</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>healingCapButton2</sender>
+   <signal>pressed()</signal>
+   <receiver>healingCapEdit</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>1659</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>379</x>
+     <y>1666</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>incisionButton1</sender>
+   <signal>pressed()</signal>
+   <receiver>incisionEdit1</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>192</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>318</x>
+     <y>569</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>incisionButton2</sender>
+   <signal>pressed()</signal>
+   <receiver>incisionEdit2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>273</x>
+     <y>597</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>329</x>
+     <y>597</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>incisionButton1</sender>
+   <signal>pressed()</signal>
+   <receiver>incisionEdit2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>221</x>
+     <y>574</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>599</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>incisionButton2</sender>
+   <signal>pressed()</signal>
+   <receiver>incisionEdit1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>217</x>
+     <y>594</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>362</x>
+     <y>567</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>osteotomyButton1</sender>
+   <signal>pressed()</signal>
+   <receiver>osteotomyEdit1</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>171</x>
+     <y>887</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>276</x>
+     <y>885</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>osteotomyButton1</sender>
+   <signal>pressed()</signal>
+   <receiver>osteotomyEdit2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>177</x>
+     <y>881</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>304</x>
+     <y>907</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>osteotomyButton2</sender>
+   <signal>pressed()</signal>
+   <receiver>osteotomyEdit2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>216</x>
+     <y>909</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>911</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>incisionEdit1</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>incisionButton1</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>348</x>
+     <y>570</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>155</x>
+     <y>571</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>incisionEdit2</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>incisionButton2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>343</x>
+     <y>599</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>212</x>
+     <y>601</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>osteotomyEdit1</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>osteotomyButton1</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>312</x>
+     <y>884</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>155</x>
+     <y>888</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>osteotomyEdit2</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>osteotomyButton2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>912</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>913</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>osteotomyButton2</sender>
+   <signal>pressed()</signal>
+   <receiver>osteotomyEdit1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>175</x>
+     <y>911</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>883</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toothNumber</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>incisionEdit1</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>637</x>
+     <y>569</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toothNumber</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>incisionEdit2</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>637</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toothNumber</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>extractionEdit</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>463</x>
+     <y>733</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toothNumber</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>osteotomyEdit1</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>637</x>
+     <y>884</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>toothNumber</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>osteotomyEdit2</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>397</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>637</x>
+     <y>910</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
