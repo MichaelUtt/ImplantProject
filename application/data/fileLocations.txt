@@ -1,2 +1,3 @@
-reports=
+reports=C:/Users/Michael/Pictures/
 xrays=C:/PythonProjects/ImplantProject/app/static/images
+excel=C:/PythonProjects/ImplantApp/application/data/IMPLANTS-DR. DAVID.xlsx

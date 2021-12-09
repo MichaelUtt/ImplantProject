@@ -48,404 +48,13 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-408</y>
+         <y>0</y>
          <width>805</width>
-         <height>1078</height>
+         <height>1024</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="4" column="0">
-         <layout class="QGridLayout" name="buttonGrid" rowstretch="0,0,0,0,0,0,0">
-          <item row="5" column="0">
-           <widget class="QPushButton" name="printSurgeryReport">
-            <property name="text">
-             <string>Print Surgery Report</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QPushButton" name="printChartNotesReport">
-            <property name="text">
-             <string>Print Chart Notes Report</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QPushButton" name="addImplantYes">
-            <property name="text">
-             <string>Yes</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="Line" name="line">
-            <property name="midLineWidth">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QPushButton" name="addImplantNo">
-            <property name="text">
-             <string>No</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_9">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Add Another Implant</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="0">
-         <widget class="QTabWidget" name="createPages">
-          <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="page1">
-           <attribute name="title">
-            <string>Implant 1</string>
-           </attribute>
-           <attribute name="toolTip">
-            <string>Implant 1</string>
-           </attribute>
-           <layout class="QGridLayout" name="gridLayout_4" columnstretch="0" rowminimumheight="0,0">
-            <item row="1" column="0">
-             <layout class="QVBoxLayout" name="implantLayout">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-             </layout>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <layout class="QGridLayout" name="topGrid" rowstretch="0,0,0,0,0,0,0" columnstretch="0,2,1">
-          <property name="leftMargin">
-           <number>8</number>
-          </property>
-          <property name="topMargin">
-           <number>5</number>
-          </property>
-          <property name="horizontalSpacing">
-           <number>10</number>
-          </property>
-          <item row="6" column="1">
-           <widget class="QDateEdit" name="restoreDate">
-            <property name="calendarPopup">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QDateEdit" name="date">
-            <property name="calendarPopup">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Chart Number</string>
-            </property>
-            <property name="buddy">
-             <cstring>chartNumber</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Doctor</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QDateEdit" name="uncoverDate">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="calendarPopup">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Date</string>
-            </property>
-            <property name="buddy">
-             <cstring>date</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="2">
-           <widget class="QCheckBox" name="singleStage">
-            <property name="text">
-             <string>Single Stage</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="chartNumber"/>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="patientName"/>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Uncover Date</string>
-            </property>
-            <property name="buddy">
-             <cstring>uncoverDate</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-             <string>Restore Date</string>
-            </property>
-            <property name="buddy">
-             <cstring>restoreDate</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Patient Name</string>
-            </property>
-            <property name="buddy">
-             <cstring>patientName</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <layout class="QVBoxLayout" name="doctorBox"/>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
-         <layout class="QGridLayout" name="reportGrid">
-          <item row="18" column="0">
-           <widget class="QGroupBox" name="implantRestoreBox">
-            <property name="title">
-             <string>Implant Restore</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-            <property name="checked">
-             <bool>false</bool>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_8">
-             <property name="horizontalSpacing">
-              <number>6</number>
-             </property>
-             <property name="verticalSpacing">
-              <number>11</number>
-             </property>
-             <item row="3" column="0">
-              <widget class="QRadioButton" name="restoreBtn4">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QRadioButton" name="restoreBtn6">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="2">
-              <widget class="QLabel" name="restoreOpt1">
-               <property name="text">
-                <string>Implant can be restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn1</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="2">
-              <widget class="QLabel" name="restoreOpt3">
-               <property name="text">
-                <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn3</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="restoreOpt2">
-               <property name="text">
-                <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn2</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QRadioButton" name="restoreBtn3">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QRadioButton" name="restoreBtn2">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QRadioButton" name="restoreBtn1">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QRadioButton" name="restoreBtn5">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QLabel" name="restoreOpt4">
-               <property name="text">
-                <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn4</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <widget class="QLabel" name="restoreOpt5">
-               <property name="text">
-                <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn5</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="2">
-              <widget class="QLabel" name="restoreOpt6">
-               <property name="text">
-                <string>Implant can be uncovered after &lt;implant uncovery date&gt;  restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn6</cstring>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
          <layout class="QGridLayout" name="bottomGrid">
           <item row="0" column="0">
            <widget class="QGroupBox" name="anestheticBox">
@@ -622,6 +231,379 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="topGrid" rowstretch="0,0,0,0,0,0,0" columnstretch="0,2,1">
+          <property name="leftMargin">
+           <number>8</number>
+          </property>
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>10</number>
+          </property>
+          <item row="6" column="1">
+           <widget class="QDateEdit" name="restoreDate">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QDateEdit" name="date">
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Chart Number</string>
+            </property>
+            <property name="buddy">
+             <cstring>chartNumber</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Doctor</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QDateEdit" name="uncoverDate">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Date</string>
+            </property>
+            <property name="buddy">
+             <cstring>date</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="2">
+           <widget class="QCheckBox" name="singleStage">
+            <property name="text">
+             <string>Single Stage</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="chartNumber"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="patientName">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Can be written as either:&lt;/p&gt;&lt;p&gt;Firstname Lastname&lt;/p&gt;&lt;p&gt;OR&lt;/p&gt;&lt;p&gt;Lastname, Firstname&lt;/p&gt;&lt;p&gt;(note the comma)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Uncover Date</string>
+            </property>
+            <property name="buddy">
+             <cstring>uncoverDate</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Restore Date</string>
+            </property>
+            <property name="buddy">
+             <cstring>restoreDate</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Can be written as either:&lt;/p&gt;&lt;p&gt;Firstname Lastname&lt;/p&gt;&lt;p&gt;OR&lt;/p&gt;&lt;p&gt;Lastname, Firstname&lt;/p&gt;&lt;p&gt;(note the comma)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhNone</set>
+            </property>
+            <property name="text">
+             <string>Patient Name</string>
+            </property>
+            <property name="buddy">
+             <cstring>patientName</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <layout class="QVBoxLayout" name="doctorBox"/>
+          </item>
+         </layout>
+        </item>
+        <item row="5" column="0">
+         <layout class="QGridLayout" name="buttonGrid" rowstretch="0,0,0,0,0">
+          <item row="3" column="0">
+           <widget class="QPushButton" name="printSurgeryReport">
+            <property name="text">
+             <string>Create Surgery Report</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QPushButton" name="printChartNotesReport">
+            <property name="text">
+             <string>Create Chart Notes Report</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="Line" name="line">
+            <property name="midLineWidth">
+             <number>5</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <layout class="QGridLayout" name="reportGrid">
+          <item row="18" column="0">
+           <widget class="QGroupBox" name="implantRestoreBox">
+            <property name="title">
+             <string>Implant Restore</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_8">
+             <property name="horizontalSpacing">
+              <number>6</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>11</number>
+             </property>
+             <item row="0" column="2">
+              <widget class="QLabel" name="restoreOpt1">
+               <property name="text">
+                <string>Implant can be restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="buddy">
+                <cstring>restoreBtn1</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QRadioButton" name="restoreBtn4">
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLabel" name="restoreOpt3">
+               <property name="text">
+                <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="buddy">
+                <cstring>restoreBtn3</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QRadioButton" name="restoreBtn6">
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QRadioButton" name="restoreBtn3">
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QRadioButton" name="restoreBtn1">
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QRadioButton" name="restoreBtn5">
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QRadioButton" name="restoreBtn2">
+               <property name="maximumSize">
+                <size>
+                 <width>13</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="restoreOpt2">
+               <property name="text">
+                <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="buddy">
+                <cstring>restoreBtn2</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="2">
+              <widget class="QLabel" name="restoreOpt5">
+               <property name="text">
+                <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="buddy">
+                <cstring>restoreBtn5</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="restoreOpt4">
+               <property name="text">
+                <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="buddy">
+                <cstring>restoreBtn4</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="2">
+              <widget class="QLabel" name="restoreOpt6">
+               <property name="text">
+                <string>Implant can be uncovered after &lt;implant uncovery date&gt;  restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+               <property name="buddy">
+                <cstring>restoreBtn6</cstring>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTabWidget" name="createPages">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="page1">
+           <attribute name="title">
+            <string>Implant 1</string>
+           </attribute>
+           <attribute name="toolTip">
+            <string>Implant 1</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_4" columnstretch="0" rowminimumheight="0,0">
+            <item row="1" column="0">
+             <layout class="QVBoxLayout" name="implantLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="addImplantYes">
+          <property name="text">
+           <string>Add Another Implant</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>

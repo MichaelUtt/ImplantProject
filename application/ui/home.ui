@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>647</width>
-    <height>594</height>
+    <height>608</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,10 +35,10 @@ QPushButton {
 </string>
   </property>
   <property name="tabShape">
-   <enum>QTabWidget::Triangular</enum>
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,0,0,0,0,0,2">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,0,0,0,0,0,1,0">
     <property name="spacing">
      <number>10</number>
     </property>
@@ -257,9 +257,9 @@ font: 36pt &quot;Palatino Linotype&quot;;</string>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2">
       <property name="spacing">
-       <number>0</number>
+       <number>6</number>
       </property>
       <item>
        <widget class="QPushButton" name="viewReports">
@@ -274,22 +274,6 @@ font: 36pt &quot;Palatino Linotype&quot;;</string>
         </property>
         <property name="text">
          <string>Open Reports Folder</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="defaultFolderButton">
-        <property name="font">
-         <font>
-          <family>Arial</family>
-          <pointsize>16</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Set Default Folder</string>
         </property>
        </widget>
       </item>
@@ -365,6 +349,43 @@ font: 36pt &quot;Palatino Linotype&quot;;</string>
        <string/>
       </property>
      </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,1,1">
+      <property name="bottomMargin">
+       <number>15</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="defaultFolderButton">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>16</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Set Reports Folder</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="defaultExcelButton">
+        <property name="text">
+         <string>Set Excel File</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="helpButton">
+        <property name="text">
+         <string>Help</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

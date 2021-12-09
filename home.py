@@ -1,14 +1,18 @@
-import application
-from docx import Document
-from docx.shared import Inches
+def separatePatient(name):
+    firstName = ""
+    lastName = ""
+    if "," in name:
+        parts = name.split(",", 1)
+        lastName = parts[0].strip()
+        firstName = parts[1].strip()
 
-doc = Document('application\\data\\template.docx')
+    elif " " in name:
+        parts = name.split(" ", 1)
+        firstName = parts[0].strip()
+        lastName = parts[1].strip()
+    else:
+        lastName = name
 
-tables = doc.tables
-print(doc.get_merge_fields())
+    return firstName, lastName
 
-p = tables[0].rows[0].cells[0].add_paragraph()
-r = p.add_run()
-r.add_picture('C:\\PythonProjects\\ImplantApp\\app\\static\\images\\exampleXray.jpeg',width=Inches(2.5))
-
-doc.save('test2.docx')
+print(separatePatient("Michael Utt"))

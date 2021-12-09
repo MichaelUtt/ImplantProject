@@ -1,3 +1,4 @@
+import datetime
 import os
 
 from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate
@@ -15,6 +16,8 @@ from docx import Document
 from docx.shared import Inches
 from PyQt5 import uic
 import json
+import pandas as pd
+from openpyxl import load_workbook
 
 
 class CreateReportPage(QMainWindow):
@@ -76,6 +79,10 @@ class CreateReportPage(QMainWindow):
         self.printSurgeryReportButton = self.findChild(QPushButton, "printSurgeryReport")
         self.printSurgeryReportButton.clicked.connect(self.printSurgeryReportPressed)
 
+
+        self.printChartNotesReportButton = self.findChild(QPushButton, "printChartNotesReport")
+        self.printChartNotesReportButton.clicked.connect(self.printChartNotesReportPressed)
+
         self.setDateDefaults()
         self.uncoverDate.dateChanged.connect(self.dateChanged)
         self.restoreDate.dateChanged.connect(self.dateChanged)
@@ -111,7 +118,7 @@ class CreateReportPage(QMainWindow):
 
         lastDir = " "
         if len(lines[1]) > 6:
-            lastDir = lines[1][6:]
+            lastDir = lines[1][6:].strip()
         # print(lastDir)
 
         fname = QFileDialog.getOpenFileName(self, 'Open X-Ray',
@@ -123,7 +130,8 @@ class CreateReportPage(QMainWindow):
 
         with open("data/fileLocations.txt", "w") as content:
             content.write(lines[0])
-            content.write("xrays="+os.path.dirname(fname[0]))
+            content.write("xrays="+os.path.dirname(fname[0])+"\n")
+            content.write(lines[2])
 
 
 
@@ -255,21 +263,124 @@ class CreateReportPage(QMainWindow):
         document.write('temp.docx')
         doc = Document('temp.docx')
         if self.xrayPath != None:
-
             tables = doc.tables
-
             p = tables[0].rows[0].cells[0].add_paragraph()
             r = p.add_run()
             r.add_picture(self.xrayPath, width=Inches(2.5), height=Inches(2.5))
 
+        firstName, lastName = self.separatePatient(self.patientName.text())
+        dateString = self.date.dateTime().toString("yyyy_MM_dd")
+        filename = lastName + "_" + firstName + "_" + dateString + ".docx"
+
         with open("data/fileLocations.txt", "r") as content:
             lines = content.readlines()
-        dir = lines[0][8:]
-        doc.save('test5.docx')
+        dir = lines[0][8:].strip()
+        if len(dir) < 3:
+            dir = self.setDefaultFolder()
+        pathName = os.path.join(dir, filename)
+        doc.save(pathName)
 
         os.remove('temp.docx')
 
+    def printChartNotesReportPressed(self):
 
+        # Open Excel Data
+        with open("data/fileLocations.txt", "r") as content:
+            lines = content.readlines()
+        excelFile = lines[2][6:].strip()
+        df = pd.read_excel(excelFile)
+        if df.size == 0:
+            print("NO file")
+            return
+
+        # Names and filling/removing cells
+        columnNames = ["Patient", "", "Chart", "ImplantDate", "UncoverDate", "ExposedDate", "Details",
+                       "NumberPlaced", "MinisPlaced"]
+        df.drop(df.columns[len(columnNames):], 1, inplace=True)
+        df.columns = columnNames
+        df.replace("", float("NaN"), inplace=True)
+        df.dropna(subset=["ImplantDate"], inplace=True)
+        df["Patient"].fillna(method='ffill', inplace=True)
+        df.replace(float("NaN"), "", inplace=True)
+
+        # Test: Fields, Gene
+        firstName, lastName = self.separatePatient(self.patientName.text())
+        formattedName = lastName +", "+ firstName
+        patientRecords = df[df['Patient'].str.match(formattedName)]
+        # print(patientRecords)
+
+        # Determine the insert index
+        if not patientRecords.empty:
+            lastIndex = int(patientRecords.index[-1])+3
+        else:
+            lastIndex = int(df.iloc[-1].name)+4
+        # print(lastIndex)
+
+        wb = load_workbook(excelFile)
+        ws = wb.active
+
+        newRows = self.tabWidget.count()
+        ws.insert_rows(lastIndex, newRows)
+
+        currentIndex = lastIndex
+        print(ws.cell(row=6304, column=5).data_type)
+        print(type(ws.cell(row=6304, column=5).data_type))
+        if patientRecords.empty:
+            ws.cell(row=currentIndex, column=1).value = formattedName
+            ws.cell(row=currentIndex, column=3).value = self.chartNumber.text()
+
+
+        for tab in self.tabWidget.findChildren(NewImplantForm):
+            ws.cell(row=currentIndex, column=2).value = 'x'
+            ws.cell(row=currentIndex, column=4).value = self.date.text()
+            ws.cell(row=currentIndex, column=4).number_format = 'mm-dd-yy'
+            if self.singleStage.isChecked():
+                uncoverVal = "Single Stage"
+            else:
+                uncoverVal = self.date.text()
+            ws.cell(row=currentIndex, column=5).value = uncoverVal
+            ws.cell(row=currentIndex, column=5).number_format = 'mm-dd-yy'
+
+            ws.cell(row=currentIndex, column=7).value = tab.implant
+            ws.cell(row=currentIndex, column=8).value = "1"
+            currentIndex += 1
+
+        wb.save(excelFile)
+
+
+    def separatePatient(self, name):
+
+        firstName = ""
+        lastName = ""
+        if "," in name:
+            parts = name.split(",", 1)
+            lastName = parts[0].strip()
+            firstName = parts[1].strip()
+
+        elif " " in name:
+            parts = name.split(" ", 1)
+            firstName = parts[0].strip()
+            lastName = parts[1].strip()
+        else:
+            lastName = name
+
+        return firstName, lastName
+
+    def setDefaultFolder(self):
+
+        with open("data/fileLocations.txt", "r") as content:
+            lines = content.readlines()
+
+        file = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+        if len(file) < 2:
+            return "C:/"
+
+        with open("data/fileLocations.txt", "w") as content:
+            content.write("reports="+file+"\n")
+            content.write(lines[1])
+            content.write(lines[2])
+
+        return file
 
 
 
@@ -282,6 +393,7 @@ class NewImplantForm(QWidget):
         self.implantTree = self.findChild(QTreeView, 'implantList')
         self.makeImplantTree()
         self.implantTree.clicked.connect(self.implantChanged)
+        self.isMiniImplant = False
 
         self.toothNumber = self.findChild(QLineEdit, 'toothNumber')
         self.lotNumber = self.findChild(QLineEdit, 'lotNumber')

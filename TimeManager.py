@@ -101,7 +101,7 @@ Time worked:
 +30 hours
 +16 hours
 +51 hours as of 8/5
-
++17 - 12/9
 
 """
 
