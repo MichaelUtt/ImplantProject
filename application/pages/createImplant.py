@@ -1,14 +1,7 @@
-from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate, QSize
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
-from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
-                             QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-                             QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-                             QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-                             QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog, QScrollArea,
-                             QMainWindow, QTreeView)
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QCheckBox, QComboBox, QLineEdit, QPushButton, QWidget, QScrollArea, QTreeView
 from PyQt5.Qt import QStandardItemModel, QStandardItem
-from application.pages import home
-from mailmerge import MailMerge
 from PyQt5 import uic
 import json
 
@@ -24,8 +17,7 @@ class ImplantPage(QWidget):
             Qt.Window |
             Qt.CustomizeWindowHint |
             Qt.WindowTitleHint |
-            Qt.WindowCloseButtonHint |
-            Qt.WindowStaysOnTopHint
+            Qt.WindowCloseButtonHint
         )
 
         # Implant View
@@ -131,7 +123,7 @@ class ImplantPage(QWidget):
                     implants.pop(root)
                     break
 
-        print(implants)
+        # print(implants)
         with open("data/implants.json", "w") as content:
             json.dump(implants, content)
 
@@ -146,7 +138,7 @@ class ImplantPage(QWidget):
             implants = json.load(content)
 
         location = self.implantParent.currentText().split("/")
-        print(location)
+        # print(location)
         if len(location) > 1:
             if self.implantEdit.text() not in implants[location[0]][location[1]]:
                 implants[location[0]][location[1]].append(self.implantEdit.text())
@@ -193,7 +185,7 @@ class ImplantPage(QWidget):
         else:
             if self.implantEdit.text() not in implants[location]:
                 implants[location][self.categoryEdit.text()] = []
-        print(implants)
+        # print(implants)
 
 
         with open("data/implants.json", "w") as content:

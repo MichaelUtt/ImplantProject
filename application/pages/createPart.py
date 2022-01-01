@@ -1,16 +1,8 @@
-from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate, QSize
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
-from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
-                             QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-                             QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-                             QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-                             QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog, QScrollArea,
-                             QMainWindow, QTreeView, QListView, QFrame)
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import QFont, QIcon
+from PyQt5.QtWidgets import QCheckBox, QComboBox, QLineEdit, QPushButton, QWidget, QListView, QFrame
 from PyQt5.Qt import QStandardItemModel, QStandardItem
-from application.pages import home
-from mailmerge import MailMerge
 from PyQt5 import uic
-import json
 
 class PartPage(QWidget):
     def __init__(self):
@@ -24,8 +16,7 @@ class PartPage(QWidget):
             Qt.Window |
             Qt.CustomizeWindowHint |
             Qt.WindowTitleHint |
-            Qt.WindowCloseButtonHint |
-            Qt.WindowStaysOnTopHint
+            Qt.WindowCloseButtonHint
         )
 
 

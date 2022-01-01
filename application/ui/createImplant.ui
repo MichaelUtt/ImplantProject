@@ -48,7 +48,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-373</y>
          <width>805</width>
          <height>1024</height>
         </rect>
@@ -357,14 +357,14 @@
           <item row="3" column="0">
            <widget class="QPushButton" name="printSurgeryReport">
             <property name="text">
-             <string>Create Surgery Report</string>
+             <string>Create Document and Update Excel</string>
             </property>
            </widget>
           </item>
           <item row="4" column="0">
            <widget class="QPushButton" name="printChartNotesReport">
             <property name="text">
-             <string>Create Chart Notes Report</string>
+             <string>Update Excel Chart</string>
             </property>
            </widget>
           </item>

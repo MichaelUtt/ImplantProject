@@ -1,9 +1,8 @@
 import sys
 
-from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 
-from application.pages import createReport, home, createImplant
+from pages import home
 
 resolution = (800, 900)
 

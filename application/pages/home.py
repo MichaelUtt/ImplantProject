@@ -1,19 +1,10 @@
 import os.path
 
-from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
-from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
-                             QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-                             QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-                             QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-                             QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog, QScrollArea,
-                             QMainWindow, QTreeView)
-from PyQt5.Qt import QStandardItemModel, QStandardItem
-from mailmerge import MailMerge
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QPushButton, QFileDialog, QMainWindow
 from PyQt5 import uic
-import json
 
-from application.pages import createReport, createImplant, createDoctor, createPart, viewAllReports, contactPage
+from . import createReport, createImplant, createDoctor, createPart, viewAllReports, contactPage
 
 
 class HomePage(QMainWindow):
@@ -58,6 +49,13 @@ class HomePage(QMainWindow):
         self.helpPage = contactPage.HelpPage()
         self.helpPage.hide()
 
+        cornerLeft = 100
+        cornerTop = 60
+        self.setGeometry(cornerLeft, cornerTop, 650, 600)
+        self.viewPage.setGeometry(cornerLeft, cornerTop, 836, 450)
+        self.implantPage.setGeometry(cornerLeft, cornerTop, 491, 545)
+        self.partPage.setGeometry(cornerLeft, cornerTop, 491, 487)
+        self.helpPage.setGeometry(cornerLeft, cornerTop, 600, 350)
 
         self.show()
 
@@ -73,8 +71,12 @@ class HomePage(QMainWindow):
 
 
     def createReportPage(self):
-        self.reportPage = createReport.CreateReportPage()
+        self.reportPage = createReport.CreateReportPage(self)
+        #self.reportPage.closeEvent(self.closeReportPage)
         self.hide()
+
+    def closeReportPage(self):
+        self.show()
 
     def createRestorativePartPage(self, val):
         if not self.partPage.isVisible():
@@ -122,7 +124,7 @@ class HomePage(QMainWindow):
         with open("data/fileLocations.txt", "r") as content:
             lines = content.readlines()
 
-        path = lines[0][6:]
+        path = lines[2][6:]
         if len(path) > 3:
             try:
                 lastDir = os.path.dirname(path)
@@ -146,3 +148,16 @@ class HomePage(QMainWindow):
             self.helpPage.show()
         else:
             self.helpPage.hide()
+
+    def closeEvent(self, event):
+        self.viewPage.close()
+        self.implantPage.close()
+        self.partPage.close()
+        self.doctorPage.close()
+        self.helpPage.close()
+
+    def excelBackupCreate(self):
+        pass
+
+    def excelBackupCheck(self):
+        pass

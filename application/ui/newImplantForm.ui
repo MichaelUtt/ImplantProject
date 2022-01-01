@@ -305,7 +305,7 @@
         <item row="6" column="0">
          <widget class="QGroupBox" name="tappedBox">
           <property name="title">
-           <string>The site was tapped. </string>
+           <string>Tap</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -313,13 +313,28 @@
           <property name="checked">
            <bool>false</bool>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_5"/>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QRadioButton" name="radioButton_4">
+             <property name="text">
+              <string>The site was tapped. </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton">
+             <property name="text">
+              <string>The site was not tapped. </string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item row="8" column="0">
          <widget class="QGroupBox" name="implantSeatedBox">
           <property name="title">
-           <string>A &lt;implant type field&gt; implant was seated to depth. </string>
+           <string>Implant Seated</string>
           </property>
           <property name="checkable">
            <bool>true</bool>
@@ -327,7 +342,22 @@
           <property name="checked">
            <bool>false</bool>
           </property>
-          <layout class="QVBoxLayout" name="verticalLayout_8"/>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QRadioButton" name="radioButton_6">
+             <property name="text">
+              <string>A &lt;implant type field&gt; implant was seated to depth. </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_5">
+             <property name="text">
+              <string>A &lt;implant type field&gt; implant was not seated to depth. </string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
         <item row="0" column="0">

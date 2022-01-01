@@ -1,16 +1,11 @@
-import datetime
 import os
-
-from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
-from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
-                             QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-                             QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-                             QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-                             QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog, QScrollArea,
-                             QMainWindow, QTreeView, QButtonGroup)
+import psutil
+from PyQt5.QtCore import Qt, QDate
+from PyQt5.QtGui import QFont, QIcon
+from PyQt5.QtWidgets import (QCheckBox, QGroupBox, QLabel, QLineEdit, QPushButton, QRadioButton,
+                             QTabWidget, QVBoxLayout, QWidget, QMessageBox, QDateEdit, QFileDialog,
+                             QScrollArea, QMainWindow, QTreeView)
 from PyQt5.Qt import QStandardItemModel, QStandardItem
-from application.pages import home
 from mailmerge import MailMerge
 from docx import Document
 from docx.shared import Inches
@@ -21,12 +16,21 @@ from openpyxl import load_workbook
 
 
 class CreateReportPage(QMainWindow):
-    def __init__(self):
+    def __init__(self, parent):
         super(CreateReportPage, self).__init__()
         uic.loadUi('ui/createImplant.ui', self)
+        self.parentWindow = parent
+        self.setGeometry(100, 60, 840, 670)
 
         self.setWindowTitle('Create Report')
         self.setWindowIcon(QIcon('data/favicon.ico'))
+
+        self.setWindowFlags(
+            Qt.Window |
+            Qt.CustomizeWindowHint |
+            Qt.WindowTitleHint |
+            Qt.WindowCloseButtonHint
+        )
 
         self.patientName = self.findChild(QLineEdit, 'patientName')
         self.chartNumber = self.findChild(QLineEdit, 'chartNumber')
@@ -80,8 +84,8 @@ class CreateReportPage(QMainWindow):
         self.printSurgeryReportButton.clicked.connect(self.printSurgeryReportPressed)
 
 
-        self.printChartNotesReportButton = self.findChild(QPushButton, "printChartNotesReport")
-        self.printChartNotesReportButton.clicked.connect(self.printChartNotesReportPressed)
+        #self.printChartNotesReportButton = self.findChild(QPushButton, "printChartNotesReport")
+        #self.printChartNotesReportButton.clicked.connect(self.printChartNotesReportPressed)
 
         self.setDateDefaults()
         self.uncoverDate.dateChanged.connect(self.dateChanged)
@@ -220,15 +224,18 @@ class CreateReportPage(QMainWindow):
             return txt
 
     def printSurgeryReportPressed(self):
-        print(self.firstImplant.generateParagraph())
-        print(self.firstImplant.getRestorativeParts())
+
+        # print(self.firstImplant.generateParagraph())
+        # print(self.firstImplant.getRestorativeParts())
         implants = ""
         reports = ""
         parts = ""
+        healingCaps = ""
         for tab in self.tabWidget.findChildren(NewImplantForm):
             implants += (tab.getImplant()+"\n")
             reports += (tab.generateParagraph()+"\n\n")
             parts += (tab.getRestorativeParts()+"\n\n")
+            healingCaps += (tab.getHealingCapList()+"\n\n")
 
         restoreChoice = self.getRestore()
         anestheticChoice = self.getAnesthetic()
@@ -242,7 +249,7 @@ class CreateReportPage(QMainWindow):
         template = "data/template.docx"
 
         document = MailMerge(template)
-        print(document.get_merge_fields())
+        # print(document.get_merge_fields())
         document.merge(
             patient=self.patientName.text(),
             chart=self.chartNumber.text(),
@@ -251,7 +258,7 @@ class CreateReportPage(QMainWindow):
             uncover_date=uncoverVal,
             restore_date=self.restoreDate.text(),
             implant=implants,
-            healing_cap="healingCaps",
+            healing_cap=healingCaps,
             restorative_parts=parts,
             report=reports,
             restore=restoreChoice,
@@ -270,7 +277,9 @@ class CreateReportPage(QMainWindow):
 
         firstName, lastName = self.separatePatient(self.patientName.text())
         dateString = self.date.dateTime().toString("yyyy_MM_dd")
-        filename = lastName + "_" + firstName + "_" + dateString + ".docx"
+        filename = lastName + "_" + firstName + "_" + dateString
+        filename = filename.upper()
+        filename = filename + ".docx"
 
         with open("data/fileLocations.txt", "r") as content:
             lines = content.readlines()
@@ -282,7 +291,15 @@ class CreateReportPage(QMainWindow):
 
         os.remove('temp.docx')
 
+        self.printChartNotesReportPressed()
+        self.closeAndOpenHome()
+
     def printChartNotesReportPressed(self):
+        if "EXCEL.EXE" in (p.name() for p in psutil.process_iter()):
+            error_dialog = QMessageBox()
+            error_dialog.setText('Excel is open. Close excel and try again.')
+            error_dialog.exec_()
+            return
 
         # Open Excel Data
         with open("data/fileLocations.txt", "r") as content:
@@ -323,8 +340,7 @@ class CreateReportPage(QMainWindow):
         ws.insert_rows(lastIndex, newRows)
 
         currentIndex = lastIndex
-        print(ws.cell(row=6304, column=5).data_type)
-        print(type(ws.cell(row=6304, column=5).data_type))
+        #print(type(ws.cell(row=6304, column=5).data_type))
         if patientRecords.empty:
             ws.cell(row=currentIndex, column=1).value = formattedName
             ws.cell(row=currentIndex, column=3).value = self.chartNumber.text()
@@ -381,6 +397,14 @@ class CreateReportPage(QMainWindow):
             content.write(lines[2])
 
         return file
+
+    def closeAndOpenHome(self):
+        self.parentWindow.show()
+        self.close()
+
+    def closeEvent(self, event):
+        self.parentWindow.show()
+        event.accept()
 
 
 
@@ -478,7 +502,13 @@ class NewImplantForm(QWidget):
 
         self.findChild(QLabel, "implantBoxLabel").setText("Implant: "+self.implant)
 
-        self.implantSeatedBox.setTitle("A " + self.implant + " implant was seated to depth. ")
+        firstButton = True
+        for opt in self.implantSeatedBox.findChildren(QRadioButton):
+            if firstButton:
+                opt.setText("A "+ self.implant+" implant was seated to depth.")
+                firstButton = False
+            else:
+                opt.setText("A " + self.implant + " implant was not seated to depth.")
 
     def fillRestorativeParts(self):
 
@@ -676,9 +706,13 @@ class NewImplantForm(QWidget):
 
     def getTapped(self):
         if not self.tappedBox.isChecked():
-            return "The site was not tapped. "
-        else:
-            return "The site was tapped. "
+            return ""
+
+        for opt in self.tappedBox.findChildren(QRadioButton):
+            if opt.isChecked():
+                return opt.text()
+        return ""
+
 
     def getSinus(self):
         if not self.sinusBox.isChecked():
@@ -691,10 +725,12 @@ class NewImplantForm(QWidget):
 
     def getSeated(self):
         if not self.implantSeatedBox.isChecked():
-            return self.implantSeatedBox.title().replace("was", "was not")
-            # return ""
-        else:
-            return self.implantSeatedBox.title()
+            return ""
+
+        for opt in self.implantSeatedBox.findChildren(QRadioButton):
+            if opt.isChecked():
+                return opt.text()
+        return ""
 
     def getDepth(self):
         if not self.depthBox.isChecked():
@@ -770,8 +806,23 @@ class NewImplantForm(QWidget):
                txt += opt.text() + "\n"
         return txt
 
+
     def getImplant(self):
-        return str(self.implant)
+        return (str(self.implant) + " #"+ str(self.toothNumber.text()))
+
+    def getHealingCapList(self):
+        if not self.healingCapBox.isChecked():
+            return ""
+
+        btn1 = self.healingCapBox.findChild(QRadioButton, 'healingCapButton1')
+        btn2 = self.healingCapBox.findChild(QRadioButton, 'healingCapButton2')
+        edit = self.healingCapBox.findChild(QLineEdit, 'healingCapEdit')
+
+
+        if btn1.isChecked():
+            return ""
+        else:
+            return "A " + edit.text() + " healing cap #" + str(self.toothNumber.text())
 
 
 

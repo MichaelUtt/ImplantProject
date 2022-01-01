@@ -1,16 +1,7 @@
-from PyQt5.QtCore import QDateTime, Qt, QTimer, QDate, QSize, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QFont, QMouseEvent, QPixmap, QIcon
-from PyQt5.QtWidgets import (QApplication, QCheckBox, QComboBox, QDateTimeEdit,
-                             QDial, QDialog, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-                             QProgressBar, QPushButton, QRadioButton, QScrollBar, QSizePolicy,
-                             QSlider, QSpinBox, QStyleFactory, QTableWidget, QTabWidget, QTextEdit,
-                             QVBoxLayout, QWidget, QInputDialog, QMessageBox, QDateEdit, QFileDialog, QScrollArea,
-                             QMainWindow, QTreeView)
-from PyQt5.Qt import QStandardItemModel, QStandardItem
-from application.pages import home
-from mailmerge import MailMerge
-from PyQt5 import uic
-import json
+from PyQt5.QtCore import Qt, QSize, pyqtSignal, pyqtSlot
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import (QDialog, QGridLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton,
+                             QVBoxLayout, QWidget)
 
 class DoctorPage(QWidget):
 
