@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt, QSize, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QFont
 from PyQt5.QtWidgets import (QDialog, QGridLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton,
                              QVBoxLayout, QWidget)
 
@@ -30,6 +30,9 @@ class DoctorPage(QWidget):
         f.close()
         self.resize(QSize(500,0))
 
+        self.myFont = QFont("MS Shell Dlg 2", 12)
+        self.myFontBold = QFont("MS Shell Dlg 2", 12, QFont.Bold)
+
         self.layout = QGridLayout()
         self.setLayout(self.layout)
         self.docCount = 0
@@ -38,7 +41,7 @@ class DoctorPage(QWidget):
 
         self.layout.setRowStretch(20,2)
 
-        addDocBtn = QPushButton("Add Doctor")
+        addDocBtn = QPushButton("Add Doctor", font=self.myFont)
         addDocBtn.clicked.connect(self.addDoc)
         self.layout.addWidget(addDocBtn,21,0)
 
@@ -56,20 +59,20 @@ class DoctorPage(QWidget):
         d.setWindowTitle("New Doctor")
         l = QVBoxLayout()
         d.setLayout(l)
-        edit = QLineEdit()
+        edit = QLineEdit(font=self.myFont)
 
         l.addWidget(edit)
-        addBtn = QPushButton("Add")
+        addBtn = QPushButton("Add", font=self.myFont)
         addBtn.clicked.connect(getNewDoc)
         l.addWidget(addBtn)
         d.exec_()
 
     def createDoc(self, name):
         doc = name.replace("\n", "")
-        nameLabel = QLabel(doc)
+        nameLabel = QLabel(doc, font=self.myFont)
         nameLabel.setObjectName("label" + str(self.docCount))
         self.layout.addWidget(nameLabel, self.docCount, 0)
-        removeButton = QPushButton("Remove")
+        removeButton = QPushButton("Remove", font=self.myFont)
         removeButton.clicked.connect(removeButton.deleteLater)
         removeButton.pressed.connect(nameLabel.deleteLater)
         removeButton.clicked.connect(self.removeDoc)
@@ -95,9 +98,9 @@ class DoctorItem(QWidget):
         super(DoctorItem, self).__init__()
 
         self.layout = QHBoxLayout()
-        self.nameLabel = QLabel(name)
+        self.nameLabel = QLabel(name, font=self.myFont)
         self.layout.addWidget(self.nameLabel)
-        self.removeButton = QPushButton("Remove")
+        self.removeButton = QPushButton("Remove", font=self.myFont)
         self.layout.addWidget(self.removeButton)
 
         self.setLayout(self.layout)

@@ -22,7 +22,7 @@
 }
 QPushButton {
     background-color: rgb(26, 115, 232);
-	height: 1.5em;
+	height: 2em;
 	
 	font: bold 16pt &quot;Arial&quot;;
 	color: white;
@@ -38,7 +38,7 @@ QPushButton {
    <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,0,0,0,0,0,1,0">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,0,0,0,1,0">
     <property name="spacing">
      <number>10</number>
     </property>
@@ -273,16 +273,16 @@ font: 36pt &quot;Palatino Linotype&quot;;</string>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Open Reports Folder</string>
+         <string>View Reports</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="createImplant">
+     <widget class="QPushButton" name="addMenu">
       <property name="text">
-       <string>View/Add Implants</string>
+       <string>Add Menu</string>
       </property>
       <property name="checkable">
        <bool>false</bool>
@@ -297,32 +297,6 @@ font: 36pt &quot;Palatino Linotype&quot;;</string>
        <bool>false</bool>
       </property>
       <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="createRestorativePart">
-      <property name="text">
-       <string>View/Add Restorative Parts</string>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="createDoctor">
-      <property name="text">
-       <string>Add Doctor</string>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="checked">
        <bool>false</bool>
       </property>
      </widget>

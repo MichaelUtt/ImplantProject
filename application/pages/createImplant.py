@@ -144,14 +144,21 @@ class ImplantPage(QWidget):
                 implants[location[0]][location[1]].append(self.implantEdit.text())
                 implants[location[0]][location[1]] = sorted(implants[location[0]][location[1]])
         else:
-            if self.implantEdit.text() not in implants[location[0]]:
+            if isinstance(implants[location[0]], list):
+                if self.implantEdit.text() not in implants[location[0]]:
+                    implants[location[0]].append(self.implantEdit.text())
+                    implants[location[0]] = sorted(implants[location[0]])
+            if isinstance(implants[location[0]], dict):
+                implants[location[0]] = []
                 implants[location[0]].append(self.implantEdit.text())
                 implants[location[0]] = sorted(implants[location[0]])
+
 
         with open("data/implants.json", "w") as content:
             json.dump(implants, content)
 
         self.makeImplantTree()
+        self.setCategoryParents()
 
     def setImplantParents(self):
 
@@ -161,14 +168,18 @@ class ImplantPage(QWidget):
         options = []
         for root, child in implants.items():
             #options.append(root)
-            #print(root)
+
             outer = QStandardItem(root)
-            #print(child)
+
             try:
+                if len(child.items()) == 0:
+                    options.append(root)
                 for root2, grandchild in child.items():
                     options.append(root + "/" + root2)
+
             except AttributeError:
                 options.append(root)
+
 
 
         self.implantParent.clear()
@@ -183,8 +194,10 @@ class ImplantPage(QWidget):
         if location == "New Branch":
             implants[self.categoryEdit.text()] = {}
         else:
-            if self.implantEdit.text() not in implants[location]:
-                implants[location][self.categoryEdit.text()] = []
+            if isinstance(implants[location], dict):
+                if self.implantEdit.text() not in implants[location]:
+                    implants[location][self.categoryEdit.text()] = []
+
         # print(implants)
 
 

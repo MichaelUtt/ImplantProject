@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
-    <height>1920</height>
+    <width>829</width>
+    <height>2559</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,23 +16,45 @@
   <property name="styleSheet">
    <string notr="true">#newImplant {
 	background-color: rgb(232, 234, 237);
-}</string>
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QWidget" name="newImplantWidget" native="true">
-     <layout class="QVBoxLayout" name="newImplantLayout" stretch="0,0,0,0,0,0,1">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <layout class="QVBoxLayout" name="newImplantLayout" stretch="0,0,0,0,0,0,0,1">
       <item>
        <widget class="QLabel" name="implantBoxLabel">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
         <property name="text">
          <string>Implant: None</string>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::NoTextInteraction</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QScrollArea" name="scrollArea_2">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -40,14 +62,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>192</height>
+          <height>300</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>192</height>
-         </size>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="verticalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -60,9 +81,15 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>666</width>
-           <height>190</height>
+           <width>791</width>
+           <height>298</height>
           </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <property name="spacing">
@@ -88,6 +115,11 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
@@ -107,6 +139,19 @@
        </widget>
       </item>
       <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <layout class="QGridLayout" name="implantGrid" columnstretch="0,0">
         <property name="leftMargin">
          <number>8</number>
@@ -117,8 +162,25 @@
         <property name="horizontalSpacing">
          <number>11</number>
         </property>
+        <item row="2" column="1">
+         <widget class="QDateEdit" name="expirationDate">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_9">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Expiration Date</string>
           </property>
@@ -126,35 +188,68 @@
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_6">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Tooth Number</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
-         <widget class="QDateEdit" name="expirationDate">
-          <property name="calendarPopup">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Lot Number</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="toothNumber"/>
+         <widget class="QLineEdit" name="toothNumber">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lotNumber"/>
+         <widget class="QLineEdit" name="lotNumber">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
       <item>
        <widget class="QLabel" name="restorativePartsBoxLabel">
+        <property name="font">
+         <font>
+          <family>MS Shell Dlg 2</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
         <property name="text">
          <string>Restorative Parts</string>
         </property>
@@ -171,14 +266,13 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>192</height>
+          <height>300</height>
          </size>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>192</height>
-         </size>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
@@ -188,8 +282,8 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>666</width>
-           <height>190</height>
+           <width>791</width>
+           <height>298</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -232,6 +326,13 @@
        <layout class="QGridLayout" name="topReportGrid">
         <item row="1" column="0">
          <widget class="QGroupBox" name="flapBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Flap</string>
           </property>
@@ -239,11 +340,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
             <widget class="QRadioButton" name="radioButton_2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>A full thickness flap was elevated. </string>
              </property>
@@ -251,6 +357,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_3">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Full thickness flaps were elevated. </string>
              </property>
@@ -261,6 +372,13 @@
         </item>
         <item row="7" column="0">
          <widget class="QGroupBox" name="sinusBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Sinus</string>
           </property>
@@ -268,11 +386,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
             <widget class="QRadioButton" name="radioButton_18">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>An osteotome sinus lift was performed.  There were no perforations. </string>
              </property>
@@ -280,6 +403,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_21">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>An osteotome sinus lift was performed.  There was a perforation in the membrane. </string>
              </property>
@@ -287,6 +415,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_20">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>A lateral window sinus graft was performed.  There were no perforations. </string>
              </property>
@@ -294,6 +427,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_19">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>A lateral window sinus graft was perfored.  There was a perforation in the membrane. </string>
              </property>
@@ -304,6 +442,13 @@
         </item>
         <item row="6" column="0">
          <widget class="QGroupBox" name="tappedBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Tap</string>
           </property>
@@ -311,11 +456,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
             <widget class="QRadioButton" name="radioButton_4">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>The site was tapped. </string>
              </property>
@@ -323,6 +473,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>The site was not tapped. </string>
              </property>
@@ -333,6 +488,13 @@
         </item>
         <item row="8" column="0">
          <widget class="QGroupBox" name="implantSeatedBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Implant Seated</string>
           </property>
@@ -340,11 +502,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_8">
            <item>
             <widget class="QRadioButton" name="radioButton_6">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>A &lt;implant type field&gt; implant was seated to depth. </string>
              </property>
@@ -352,6 +519,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_5">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>A &lt;implant type field&gt; implant was not seated to depth. </string>
              </property>
@@ -368,6 +540,13 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Incision</string>
           </property>
@@ -378,7 +557,7 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,0,0,0,0,1">
            <item row="4" column="4">
@@ -395,6 +574,11 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
             </widget>
            </item>
            <item row="3" column="3">
@@ -404,6 +588,11 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <property name="text">
               <string>Sulcular incisions were made around tooth/teeth #</string>
@@ -417,6 +606,11 @@
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
              </property>
              <property name="text">
               <string>A crestal incision was made distal of tooth/teeth #</string>
@@ -437,10 +631,20 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
             </widget>
            </item>
            <item row="3" column="5">
             <widget class="QLabel" name="label_3">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -451,6 +655,13 @@
         </item>
         <item row="2" column="0">
          <widget class="QGroupBox" name="extractionBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Extractions</string>
           </property>
@@ -458,11 +669,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QGridLayout" name="gridLayout_9">
            <item row="3" column="0">
             <widget class="QRadioButton" name="extractionButton1">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>The sockets was perfectly preserved. </string>
              </property>
@@ -470,6 +686,11 @@
            </item>
            <item row="6" column="0">
             <widget class="QRadioButton" name="extractionButton4">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>There was damage to the sockets. </string>
              </property>
@@ -477,6 +698,11 @@
            </item>
            <item row="4" column="0">
             <widget class="QRadioButton" name="extractionButton2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>The sockets was well preserved. </string>
              </property>
@@ -484,6 +710,11 @@
            </item>
            <item row="5" column="0">
             <widget class="QRadioButton" name="extractionButton3">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>The sockets was moderately preserved. </string>
              </property>
@@ -491,19 +722,37 @@
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_17">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Tooth/Teeth removed via forcep extraction</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="extractionEdit"/>
+            <widget class="QLineEdit" name="extractionEdit">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QGroupBox" name="osteotomyBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Osteotomy</string>
           </property>
@@ -511,7 +760,7 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QGridLayout" name="gridLayout_5" columnstretch="0,0,0,1">
            <property name="sizeConstraint">
@@ -519,6 +768,11 @@
            </property>
            <item row="0" column="0">
             <widget class="QRadioButton" name="osteotomyButton1">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>An osteotomy was prepared in site #</string>
              </property>
@@ -538,6 +792,11 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
             </widget>
            </item>
            <item row="0" column="2">
@@ -554,10 +813,20 @@
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
             </widget>
            </item>
            <item row="5" column="0">
             <widget class="QRadioButton" name="osteotomyButton2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>An osteotomy was prepared in socket #</string>
              </property>
@@ -565,6 +834,11 @@
            </item>
            <item row="0" column="3">
             <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -575,6 +849,13 @@
         </item>
         <item row="5" column="0">
          <widget class="QGroupBox" name="perforationsBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Perforations</string>
           </property>
@@ -582,11 +863,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
             <widget class="QRadioButton" name="radioButton_13">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>There were no perforations. </string>
              </property>
@@ -594,6 +880,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_17">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>There was a perforation into the sinus, but the membrane was intact. </string>
              </property>
@@ -601,6 +892,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_16">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>There was a perforation into the sinus and the sinus membrane. </string>
              </property>
@@ -608,6 +904,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_15">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>There was a perforation out the apical-buccal. </string>
              </property>
@@ -615,6 +916,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_14">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>There was a complete exposure of the buccal wall. </string>
              </property>
@@ -625,6 +931,13 @@
         </item>
         <item row="4" column="0">
          <widget class="QGroupBox" name="boneDensityBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Bone Density</string>
           </property>
@@ -632,11 +945,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
             <widget class="QRadioButton" name="radioButton_9">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Bone density was D1. </string>
              </property>
@@ -644,6 +962,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_12">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Bone density was D2. </string>
              </property>
@@ -651,6 +974,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_11">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Bone density was D3. </string>
              </property>
@@ -658,6 +986,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_10">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Bone density was D4. </string>
              </property>
@@ -668,6 +1001,13 @@
         </item>
         <item row="9" column="0">
          <widget class="QGroupBox" name="depthBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Depth</string>
           </property>
@@ -675,11 +1015,16 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_9">
            <item>
             <widget class="QRadioButton" name="radioButton_22">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant had 2mm polished collar supra-crestal. </string>
              </property>
@@ -687,6 +1032,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_28">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant had 1.5mm polished collar supra-crestal. </string>
              </property>
@@ -694,6 +1044,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_27">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant had 1mm polished collar supra-crestal. </string>
              </property>
@@ -701,6 +1056,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_26">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant had 0.5mm polished collar supra-crestal. </string>
              </property>
@@ -708,6 +1068,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_25">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant was flush with bone. </string>
              </property>
@@ -715,6 +1080,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_24">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant was flush with bone. </string>
              </property>
@@ -722,6 +1092,11 @@
            </item>
            <item>
             <widget class="QRadioButton" name="radioButton_23">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Implant was 1mm below the crest of bone. </string>
              </property>
@@ -732,6 +1107,13 @@
         </item>
         <item row="11" column="0">
          <widget class="QGroupBox" name="graftBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Graft</string>
           </property>
@@ -739,17 +1121,29 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
             <widget class="QGroupBox" name="boneMaterialBox">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="title">
               <string>Bone Material</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_10">
               <item>
                <widget class="QRadioButton" name="radioButton_31">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Regeneros putty</string>
                 </property>
@@ -757,6 +1151,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_34">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Puros (cancellous)</string>
                 </property>
@@ -764,6 +1163,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_33">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Puros + Regeneros</string>
                 </property>
@@ -771,6 +1175,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_32">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Regeneros</string>
                 </property>
@@ -781,12 +1190,24 @@
            </item>
            <item>
             <widget class="QGroupBox" name="boneMembraneBox">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="title">
               <string>Membrane</string>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">
               <item>
                <widget class="QRadioButton" name="radioButton_39">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Biomend</string>
                 </property>
@@ -794,6 +1215,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_35">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Biomend Extend</string>
                 </property>
@@ -801,6 +1227,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_36">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Copios</string>
                 </property>
@@ -808,6 +1239,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_38">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Copios Extend</string>
                 </property>
@@ -815,6 +1251,11 @@
               </item>
               <item>
                <widget class="QRadioButton" name="radioButton_37">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                 </font>
+                </property>
                 <property name="text">
                  <string>Ti-reinforced PTFE</string>
                 </property>
@@ -828,6 +1269,13 @@
         </item>
         <item row="10" column="0">
          <widget class="QGroupBox" name="healingCapBox">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
           <property name="title">
            <string>Healing Cap</string>
           </property>
@@ -835,7 +1283,7 @@
            <bool>true</bool>
           </property>
           <property name="checked">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,0,0">
            <item row="5" column="1">
@@ -843,33 +1291,65 @@
              <property name="enabled">
               <bool>true</bool>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>200</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>75</width>
                <height>16777215</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
             </widget>
            </item>
            <item row="5" column="0">
             <widget class="QRadioButton" name="healingCapButton2">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
-              <string>A  healing cap was placed for a single stage approach. </string>
+              <string>A healing cap was placed for a single stage approach. </string>
              </property>
              <property name="checked">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
             <widget class="QRadioButton" name="healingCapButton1">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>A cover screw was placed. </string>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
             <widget class="QLabel" name="healingCapEditLabel">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="text">
               <string>Healing Cap Size:</string>
              </property>
@@ -880,6 +1360,11 @@
            </item>
            <item row="5" column="2">
             <spacer name="horizontalSpacer">
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -900,6 +1385,11 @@
        <widget class="QLabel" name="label">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string/>

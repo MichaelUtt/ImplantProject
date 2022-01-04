@@ -20,7 +20,8 @@ class CreateReportPage(QMainWindow):
         super(CreateReportPage, self).__init__()
         uic.loadUi('ui/createImplant.ui', self)
         self.parentWindow = parent
-        self.setGeometry(100, 60, 840, 670)
+        # self.setGeometry(100, 60, 840, 670)
+        self.showMaximized()
 
         self.setWindowTitle('Create Report')
         self.setWindowIcon(QIcon('data/favicon.ico'))
@@ -103,7 +104,7 @@ class CreateReportPage(QMainWindow):
     def setDateDefaults(self):
         self.date.setDate(QDate.currentDate())
         self.uncoverDate.setDate(QDate.currentDate().addMonths(6))
-        self.restoreDate.setDate(QDate.currentDate().addMonths(7))
+        self.restoreDate.setDate(QDate.currentDate().addMonths(6))
 
     def dateChanged(self):
 
@@ -441,6 +442,8 @@ class NewImplantForm(QWidget):
         self.extractionEdit.textEdited.connect(self.extractionChanging)
         self.extractionEdit.editingFinished.connect(self.extractionChanged)
 
+        self.extractionBox.clicked.connect(self.buttonClicked)
+
         self.osteotomyBox = self.findChild(QGroupBox, 'osteotomyBox')
         self.osteotomyEdit1 = self.findChild(QLineEdit, 'osteotomyEdit1')
         self.osteotomyEdit2 = self.findChild(QLineEdit, 'osteotomyEdit2')
@@ -462,6 +465,11 @@ class NewImplantForm(QWidget):
         self.graftBox = self.findChild(QGroupBox, 'graftBox')
 
         #self.generateParagraph()
+
+    def buttonClicked(self):
+        print("yooo")
+        print(self.sender())
+
 
     def makeImplantTree(self):
 
@@ -493,7 +501,6 @@ class NewImplantForm(QWidget):
             rootNode.appendRow(outer)
 
         self.implantTree.setModel(treeModel)
-        self.implantTree.expandAll()
         self.implantTree.setHeaderHidden(True)
 
     def implantChanged(self, index):
@@ -523,24 +530,25 @@ class NewImplantForm(QWidget):
                     self.restorativePartsList.itemAt(i).widget().setEnabled(True)
 
         f = open("data/restorativeParts.txt", "r")
-
+        myFont = QFont("MS Shell Dlg 2", 12)
+        myFontBold = QFont("MS Shell Dlg 2", 12, QFont.Bold)
         noPartsOption = QCheckBox("No restorative parts to order.  We will scan the implant digitally.  \n"
                                   "You can choose from one of our partner Digital Implant Solutions labs \n"
                                   "to will make the models, custom abutment, and the restoration all \n"
                                   "according to your instructions.  You can communicate with your lab directly\n")
         noPartsOption.setChecked(True)
+        noPartsOption.setFont(myFont)
         noPartsOption.toggled.connect(toggleRestorativeParts)
         self.restorativePartsList.addWidget(noPartsOption)
         # print(noPartsOption)
 
         for line in f:
             if line[0] == "&":
-                myFont = QFont()
-                myFont.setBold(True)
+
 
                 category = QLabel()
                 category.setText("\n" + line[1:-1])
-                category.setFont(myFont)
+                category.setFont(myFontBold)
 
                 self.restorativePartsList.addWidget(category)
 
@@ -548,6 +556,7 @@ class NewImplantForm(QWidget):
                 if len(line) > 3:
                     option = QCheckBox()
                     option.setText(line[0:-1])
+                    option.setFont(myFont)
                     self.restorativePartsList.addWidget(option)
         f.close()
         toggleRestorativeParts()
@@ -803,7 +812,8 @@ class NewImplantForm(QWidget):
         txt = ""
         for opt in options:
             if opt.isChecked():
-               txt += opt.text() + "\n"
+                if opt.text() not in txt:
+                    txt += opt.text() + "\n"
         return txt
 
 

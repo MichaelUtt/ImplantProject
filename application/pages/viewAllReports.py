@@ -88,7 +88,9 @@ class ViewPage(QWidget):
 
 
     def generateTable(self):
-        with open("data/fileLocations.txt", "r") as content:
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\fileLocations.txt')
+        with open(path_to_dat, "r") as content:
             lines = content.readlines()
         excelFile = lines[2][6:].strip()
         df = pd.read_excel(excelFile)
@@ -147,7 +149,9 @@ class ViewPage(QWidget):
 
     def addFileButtons(self):
 
-        with open("data/fileLocations.txt", "r") as content:
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\fileLocations.txt')
+        with open(path_to_dat, "r") as content:
             lines = content.readlines()
         reportsDir = lines[0][8:].strip()
         if len(reportsDir) < 3:

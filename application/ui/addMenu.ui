@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>645</width>
+    <height>437</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">* {
+	background-color: rgb(232, 234, 237);
+}
+QPushButton {
+    background-color: rgb(26, 115, 232);
+	height: 2em;
+	
+	font: bold 16pt &quot;Arial&quot;;
+	color: white;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: black;
+    padding: 6px;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>40</number>
+   </property>
+   <property name="rightMargin">
+    <number>40</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="createImplant">
+       <property name="text">
+        <string>Add Implant</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="createPart">
+       <property name="text">
+        <string>Add Restorative Part</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="createDoctor">
+       <property name="text">
+        <string>Add Doctor</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="createMaterial">
+       <property name="text">
+        <string>Add Bone Material</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QPushButton" name="createAnesthetic">
+       <property name="text">
+        <string>Add Anesthetic</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="createPrescription">
+       <property name="text">
+        <string>Add Prescription</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="backButton">
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

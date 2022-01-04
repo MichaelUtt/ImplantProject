@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>491</width>
-    <height>487</height>
+    <width>645</width>
+    <height>603</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,14 +21,97 @@
 	background-color: rgb(232, 234, 237);
 }</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0,0,0,0,0,1">
+  <layout class="QGridLayout" name="gridLayout_2">
    <property name="verticalSpacing">
     <number>0</number>
    </property>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="showPartsBox">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Show Restorative Parts</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>Add New Restorative Part</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout" columnstretch="2,1">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Category</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QComboBox" name="partParent">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>New Restorative Part</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLineEdit" name="partEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QPushButton" name="partButton">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Add Restorative Part</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="4" column="0">
     <widget class="QFrame" name="partViewer">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -36,8 +119,13 @@
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>192</height>
+       <height>250</height>
       </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
      </property>
      <layout class="QVBoxLayout" name="partView">
       <property name="spacing">
@@ -56,12 +144,23 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QListView" name="partList"/>
+       <widget class="QListView" name="partList">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="deleteButton">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
         </property>
         <property name="text">
          <string>Delete: </string>
@@ -71,66 +170,25 @@
      </layout>
     </widget>
    </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="title">
-      <string>Add New Restorative Part</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout" columnstretch="2,1">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Category</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QComboBox" name="partParent"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>New Restorative Part</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLineEdit" name="partEdit"/>
-      </item>
-      <item row="4" column="1">
-       <widget class="QPushButton" name="partButton">
-        <property name="text">
-         <string>Add Restorative Part</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="1" column="0">
     <widget class="QGroupBox" name="groupBox_2">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
      <property name="title">
       <string>Add New Restorative Part Category</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3" columnstretch="2,1">
       <item row="1" column="0">
-       <widget class="QLineEdit" name="categoryEdit"/>
+       <widget class="QLineEdit" name="categoryEdit">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
       <item row="2" column="1">
        <widget class="QPushButton" name="categoryButton">
@@ -140,6 +198,11 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>Add Category</string>
         </property>
@@ -147,6 +210,11 @@
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string>New Category</string>
         </property>
@@ -155,12 +223,18 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QCheckBox" name="showPartsBox">
-     <property name="text">
-      <string>Show Restorative Parts</string>
+   <item row="5" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

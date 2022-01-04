@@ -99,7 +99,7 @@ class PartPage(QWidget):
         f.close()
 
         selected = self.selectedPart.text()
-        #print(selected)
+        print(selected)
         i = 0
         for line in lines:
             #print(line)

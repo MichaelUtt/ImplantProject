@@ -1,0 +1,7 @@
+mat_Regeneros putty
+mat_Puros (cancellous)
+mat_Puros + Regeneros
+mat_Regeneros
+mem_Biomendmem_Biomend Extend
+mem_Copiosmem_Copios Extend
+mem_Ti-reinforced PTFE
