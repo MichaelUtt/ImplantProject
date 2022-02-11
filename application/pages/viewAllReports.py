@@ -93,9 +93,13 @@ class ViewPage(QWidget):
         with open(path_to_dat, "r") as content:
             lines = content.readlines()
         excelFile = lines[2][6:].strip()
-        df = pd.read_excel(excelFile)
-        if df.size == 0:
-            print("NO file")
+        try:
+            df = pd.read_excel(excelFile)
+            if df.size == 0:
+                print("NO Excel file")
+                return
+        except:
+            print("NO Excel file")
             return
 
         df = df.iloc[5:, :7]

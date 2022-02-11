@@ -1,3 +1,5 @@
+# pyinstaller ImplantSoftware.spec
+
 import sys
 
 from PyQt5.QtWidgets import QApplication

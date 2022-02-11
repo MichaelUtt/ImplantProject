@@ -109,6 +109,9 @@ class CreateMenuPage(QWidget):
         self.implantPage.close()
         self.partPage.close()
         self.doctorPage.close()
+        self.materialPage.close()
+        self.anestheticPage.close()
+        self.prescriptionPage.close()
 
         self.parentWindow.show()
         event.accept()

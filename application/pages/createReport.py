@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt, QDate
 from PyQt5.QtGui import QFont, QIcon
 from PyQt5.QtWidgets import (QCheckBox, QGroupBox, QLabel, QLineEdit, QPushButton, QRadioButton,
                              QTabWidget, QVBoxLayout, QWidget, QMessageBox, QDateEdit, QFileDialog,
-                             QScrollArea, QMainWindow, QTreeView)
+                             QScrollArea, QMainWindow, QTreeView, QHBoxLayout, QGridLayout)
 from PyQt5.Qt import QStandardItemModel, QStandardItem
 from mailmerge import MailMerge
 from docx import Document
@@ -32,6 +32,9 @@ class CreateReportPage(QMainWindow):
             Qt.WindowTitleHint |
             Qt.WindowCloseButtonHint
         )
+
+        self.myFont = QFont("MS Shell Dlg 2", 12)
+        self.myFontBold = QFont("MS Shell Dlg 2", 12, QFont.Bold)
 
         self.patientName = self.findChild(QLineEdit, 'patientName')
         self.chartNumber = self.findChild(QLineEdit, 'chartNumber')
@@ -63,13 +66,22 @@ class CreateReportPage(QMainWindow):
 
         self.implantRestoreBox = self.findChild(QGroupBox, 'implantRestoreBox')
 
-        self.anestheticBox = self.findChild(QGroupBox, 'anestheticBox')
+        # Disgusting code
+        self.findChild(QLabel, 'restoreOpt3').mousePressEvent = self.restoreLabelConnectToBtn3
+        self.findChild(QLabel, 'restoreOpt4').mousePressEvent = self.restoreLabelConnectToBtn4
+        self.findChild(QLabel, 'restoreOpt5').mousePressEvent = self.restoreLabelConnectToBtn5
+
+        self.anestheticLayout = self.findChild(QVBoxLayout, 'anestheticBox')
+        self.anestheticBox = self.findChild(QGroupBox, 'anestheticGroupBox')
         self.toleranceBox = self.findChild(QGroupBox, 'toleranceBox')
-        self.prescriptionsBox = self.findChild(QGroupBox, 'prescriptionsBox')
+        self.prescriptionsLayout = self.findChild(QVBoxLayout, 'prescriptionsBox')
+        self.prescriptionsBox = self.findChild(QGroupBox, 'prescriptionsGroupBox')
+        self.createAnesthetic()
+        self.createRx()
 
         self.xrayButton = self.findChild(QPushButton, 'addXray')
         self.xrayButton.clicked.connect(self.getXrayPath)
-        self.xrayPath = 'data/noImage.jpg'
+        self.xrayPath = None
 
         self.addImplantButtonYes = self.findChild(QPushButton, 'addImplantYes')
         self.addImplantButtonYes.clicked.connect(self.addImplantTab)
@@ -108,14 +120,11 @@ class CreateReportPage(QMainWindow):
 
     def dateChanged(self):
 
-        options = self.implantRestoreBox.findChildren(QLabel)
+        options = self.findChild(QGroupBox, "restoreTopBox").findChildren(QRadioButton)
 
-        for opt in options:
-            txt = opt.text()
-            txt = txt.replace("<Implant restore date>", self.restoreDate.text())
-            txt = txt.replace("<implant uncovery date>", self.uncoverDate.text())
+        options[0].setText("Implant(s) can be restored after " + self.restoreDate.text() + ". ")
+        options[1].setText("Implant(s) can be uncovered after " + self.uncoverDate.text() + " and restored after " + self.restoreDate.text() + ". ")
 
-            opt.setText(txt)
 
     def getXrayPath(self):
         with open("data/fileLocations.txt", "r") as content:
@@ -124,10 +133,12 @@ class CreateReportPage(QMainWindow):
         lastDir = " "
         if len(lines[1]) > 6:
             lastDir = lines[1][6:].strip()
-        # print(lastDir)
 
-        fname = QFileDialog.getOpenFileName(self, 'Open X-Ray',
-                                            lastDir, "Image files (*.jpg *.jpeg)")
+        # print(lastDir)
+        try:
+            fname = QFileDialog.getOpenFileName(self, 'Open X-Ray', lastDir, "Image files (*.jpg *.jpeg)")
+        except:
+            fname = QFileDialog.getOpenFileName(self, 'Open X-Ray', "Image files (*.jpg *.jpeg)")
         if len(fname[0]) < 2:
             return
         self.xrayPath = fname[0]
@@ -152,29 +163,26 @@ class CreateReportPage(QMainWindow):
 
         with open("data/doctors.txt", "r") as content:
             lines = content.readlines()
-            docs = []
-            for line in lines:
-                if len(line) > 3:
-                    docs.append(line)
+        docs = []
+        for line in lines:
+            if len(line) > 3:
+                docs.append(line)
 
-            self.docCount = len(docs)
+        self.docCount = len(docs)
 
-            docGroup = QGroupBox()
-            docLayout = QVBoxLayout()
-            i = 0
-            for doc in docs:
-                d = QRadioButton(doc.replace("\n", ""))
-                if i == 0:
-                    d.setChecked(True)
-                d.setObjectName("doctor" + str(i))
-                d.clicked.connect(self.doctorChanged)
-                docLayout.addWidget(d)
-                i += 1
-            docGroup.setLayout(docLayout)
-            self.doctorBox.addWidget(docGroup)
-
-
-
+        docGroup = QGroupBox()
+        docLayout = QVBoxLayout()
+        i = 0
+        for doc in docs:
+            d = QRadioButton(doc.replace("\n", ""))
+            if i == 0:
+                d.setChecked(True)
+            d.setObjectName("doctor" + str(i))
+            d.clicked.connect(self.doctorChanged)
+            docLayout.addWidget(d)
+            i += 1
+        docGroup.setLayout(docLayout)
+        self.doctorBox.addWidget(docGroup)
 
     def doctorChanged(self):
         for doctorIndex in range(self.docCount):
@@ -186,20 +194,72 @@ class CreateReportPage(QMainWindow):
 
             self.tabWidget.setTabText(i,self.getTabName(i+1))
 
+    def createAnesthetic(self):
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\anesthetics.txt')
+        with open(path_to_dat, "r") as content:
+            lines = content.readlines()
+
+        anesthetics = []
+        for line in lines:
+            if len(line) > 3:
+                anesthetics.append(line.strip())
+        # print(anesthetics)
+
+        for anes in anesthetics:
+            btn = QRadioButton(anes, font=self.myFont)
+            self.anestheticLayout.addWidget(btn)
+
+    def createRx(self):
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\prescriptions.txt')
+        with open(path_to_dat, "r") as content:
+            lines = content.readlines()
+
+        prescriptions = []
+        for line in lines:
+            if len(line) > 3:
+                prescriptions.append(line.strip())
+        # print(prescriptions)
+
+        for rx in prescriptions:
+            box = QCheckBox(rx, font=self.myFont)
+            self.prescriptionsLayout.addWidget(box)
 
     def getTabName(self, pageNum):
         return (self.doctor.split()[0]+"_Implant_"+str(pageNum))
 
+    # Disgusting Code
+    def restoreLabelConnectToBtn3(self, event):
+        self.findChild(QRadioButton, 'restoreBtn3').setChecked(True)
+        event.accept()
+    def restoreLabelConnectToBtn4(self, event):
+        self.findChild(QRadioButton, 'restoreBtn4').setChecked(True)
+        event.accept()
+    def restoreLabelConnectToBtn5(self, event):
+        self.findChild(QRadioButton, 'restoreBtn5').setChecked(True)
+        event.accept()
+
     def getRestore(self):
-        options = self.implantRestoreBox.findChildren(QRadioButton)
-        for opt in options:
+        if not self.implantRestoreBox.isChecked():
+            return ""
+        txt = ""
+
+        topBox = self.findChild(QGroupBox, "restoreTopBox")
+        botBox = self.findChild(QGroupBox, 'restoreBotBox')
+        for opt in topBox.findChildren(QRadioButton):
+            if opt.isChecked():
+                txt += opt.text()
+        for opt in botBox.findChildren(QRadioButton):
             if opt.isChecked():
                 val = opt.objectName()[-1]
-                txt = self.implantRestoreBox.findChild(QLabel, ("restoreOpt"+str(val))).text()
-                return txt
-        return ""
+                txt += self.implantRestoreBox.findChild(QLabel, ("restoreOpt"+str(val))).text()
+
+        return txt
 
     def getAnesthetic(self):
+        if not self.anestheticBox.isChecked():
+            return "N/A"
         options = self.anestheticBox.findChildren(QRadioButton)
         for opt in options:
             if opt.isChecked():
@@ -214,6 +274,8 @@ class CreateReportPage(QMainWindow):
         return "N/A"
 
     def getRX(self):
+        if not self.prescriptionsBox.isChecked():
+            return "N/A"
         options = self.prescriptionsBox.findChildren(QCheckBox)
         txt = ""
         for opt in options:
@@ -235,14 +297,15 @@ class CreateReportPage(QMainWindow):
         for tab in self.tabWidget.findChildren(NewImplantForm):
             implants += (tab.getImplant()+"\n")
             reports += (tab.generateParagraph()+"\n\n")
-            parts += (tab.getRestorativeParts()+"\n\n")
-            healingCaps += (tab.getHealingCapList()+"\n\n")
+            partsString = (tab.getRestorativeParts())
+            if partsString not in parts:
+                parts += partsString
+            healingCaps += (tab.getHealingCapList()+"\n")
 
         restoreChoice = self.getRestore()
         anestheticChoice = self.getAnesthetic()
         toleranceChoice = self.getTolerance()
         rxChoice = self.getRX()
-
         if self.singleStage.isChecked():
             uncoverVal = "Single Stage"
         else:
@@ -288,17 +351,23 @@ class CreateReportPage(QMainWindow):
         if len(dir) < 3:
             dir = self.setDefaultFolder()
         pathName = os.path.join(dir, filename)
+        if not os.path.exists(dir):
+            dir = self.setDefaultFolder()
+            pathName = os.path.join(dir, filename)
         doc.save(pathName)
+
 
         os.remove('temp.docx')
 
         self.printChartNotesReportPressed()
+        os.startfile(pathName)
         self.closeAndOpenHome()
 
     def printChartNotesReportPressed(self):
         if "EXCEL.EXE" in (p.name() for p in psutil.process_iter()):
             error_dialog = QMessageBox()
-            error_dialog.setText('Excel is open. Close excel and try again.')
+            error_dialog.setWindowTitle("Error")
+            error_dialog.setText('The Excel File is open. New rows cannot be created. They will have to be inputted manually. ')
             error_dialog.exec_()
             return
 
@@ -306,9 +375,28 @@ class CreateReportPage(QMainWindow):
         with open("data/fileLocations.txt", "r") as content:
             lines = content.readlines()
         excelFile = lines[2][6:].strip()
-        df = pd.read_excel(excelFile)
-        if df.size == 0:
-            print("NO file")
+        if len(excelFile) < 3:
+            error_dialog = QMessageBox()
+            error_dialog.setWindowTitle("Select File")
+            error_dialog.setText("Select an Excel File. ")
+            error_dialog.exec_()
+            self.setDefaultExcel()
+            with open("data/fileLocations.txt", "r") as content:
+                lines = content.readlines()
+            excelFile = lines[2][6:].strip()
+        try:
+            df = pd.read_excel(excelFile)
+            if df.size == 0:
+                error_dialog = QMessageBox()
+                error_dialog.setWindowTitle("Error")
+                error_dialog.setText('Cannot read the Excel File. New rows cannot be created. They will have to be inputted manually. ')
+                error_dialog.exec_()
+                return
+        except:
+            error_dialog = QMessageBox()
+            error_dialog.setWindowTitle("Error")
+            error_dialog.setText('The Excel File could not be found. New rows cannot be created. They will have to be inputted manually. ')
+            error_dialog.exec_()
             return
 
         # Names and filling/removing cells
@@ -336,6 +424,8 @@ class CreateReportPage(QMainWindow):
 
         wb = load_workbook(excelFile)
         ws = wb.active
+        rowCount = ws.max_row
+
 
         newRows = self.tabWidget.count()
         ws.insert_rows(lastIndex, newRows)
@@ -348,7 +438,7 @@ class CreateReportPage(QMainWindow):
 
 
         for tab in self.tabWidget.findChildren(NewImplantForm):
-            ws.cell(row=currentIndex, column=2).value = 'x'
+            # ws.cell(row=currentIndex, column=2).value = 'x'
             ws.cell(row=currentIndex, column=4).value = self.date.text()
             ws.cell(row=currentIndex, column=4).number_format = 'mm-dd-yy'
             if self.singleStage.isChecked():
@@ -358,9 +448,14 @@ class CreateReportPage(QMainWindow):
             ws.cell(row=currentIndex, column=5).value = uncoverVal
             ws.cell(row=currentIndex, column=5).number_format = 'mm-dd-yy'
 
-            ws.cell(row=currentIndex, column=7).value = tab.implant
+            detailsString = tab.getDetails()
+            ws.cell(row=currentIndex, column=7).value = detailsString
             ws.cell(row=currentIndex, column=8).value = "1"
+            ws.cell(row=currentIndex, column=8).data_type = 'int64'
             currentIndex += 1
+
+        print(lastIndex, rowCount)
+        ws.delete_rows((rowCount-3-newRows), newRows)
 
         wb.save(excelFile)
 
@@ -384,8 +479,14 @@ class CreateReportPage(QMainWindow):
         return firstName, lastName
 
     def setDefaultFolder(self):
+        error_dialog = QMessageBox()
+        error_dialog.setWindowTitle("Select Report Folder")
+        error_dialog.setText("Please select a report folder. ")
+        error_dialog.exec_()
 
-        with open("data/fileLocations.txt", "r") as content:
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\fileLocations.txt')
+        with open(path_to_dat, "r") as content:
             lines = content.readlines()
 
         file = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
@@ -398,6 +499,33 @@ class CreateReportPage(QMainWindow):
             content.write(lines[2])
 
         return file
+
+    def setDefaultExcel(self):
+
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\fileLocations.txt')
+        with open(path_to_dat, "r") as content:
+            lines = content.readlines()
+
+        path = lines[2][6:]
+        if len(path) > 3:
+            try:
+                lastDir = os.path.dirname(path)
+                file = QFileDialog.getOpenFileName(self, 'Open Excel', lastDir, "Microsoft Excel files (*.xlsx)")
+            except:
+                file = QFileDialog.getOpenFileName(self, 'Open Excel', filter="Microsoft Excel files (*.xlsx)")
+        else:
+            file = QFileDialog.getOpenFileName(self, 'Open Excel', filter="Microsoft Excel files (*.xlsx)")
+
+
+        if len(file[0]) < 2:
+            return
+        # print(file)
+
+        with open(path_to_dat, "w") as content:
+            content.write(lines[0])
+            content.write(lines[1])
+            content.write("excel=" + file[0] + "\n")
 
     def closeAndOpenHome(self):
         self.parentWindow.show()
@@ -413,6 +541,9 @@ class NewImplantForm(QWidget):
     def __init__(self):
         super(NewImplantForm, self).__init__()
         uic.loadUi('ui/newImplantForm.ui', self)
+
+        self.myFont = QFont("MS Shell Dlg 2", 12)
+        self.myFontBold = QFont("MS Shell Dlg 2", 12, QFont.Bold)
 
         self.implant = ""
         self.implantTree = self.findChild(QTreeView, 'implantList')
@@ -442,8 +573,6 @@ class NewImplantForm(QWidget):
         self.extractionEdit.textEdited.connect(self.extractionChanging)
         self.extractionEdit.editingFinished.connect(self.extractionChanged)
 
-        self.extractionBox.clicked.connect(self.buttonClicked)
-
         self.osteotomyBox = self.findChild(QGroupBox, 'osteotomyBox')
         self.osteotomyEdit1 = self.findChild(QLineEdit, 'osteotomyEdit1')
         self.osteotomyEdit2 = self.findChild(QLineEdit, 'osteotomyEdit2')
@@ -463,12 +592,9 @@ class NewImplantForm(QWidget):
         self.healingCapEdit = self.findChild(QLineEdit, 'healingCapEdit')
 
         self.graftBox = self.findChild(QGroupBox, 'graftBox')
+        self.createGrafts()
 
         #self.generateParagraph()
-
-    def buttonClicked(self):
-        print("yooo")
-        print(self.sender())
 
 
     def makeImplantTree(self):
@@ -512,10 +638,10 @@ class NewImplantForm(QWidget):
         firstButton = True
         for opt in self.implantSeatedBox.findChildren(QRadioButton):
             if firstButton:
-                opt.setText("A "+ self.implant+" implant was seated to depth.")
+                opt.setText("A "+ self.implant+" implant was seated to depth. ")
                 firstButton = False
             else:
-                opt.setText("A " + self.implant + " implant was not seated to depth.")
+                opt.setText("A " + self.implant + " implant was not seated to depth. ")
 
     def fillRestorativeParts(self):
 
@@ -532,10 +658,10 @@ class NewImplantForm(QWidget):
         f = open("data/restorativeParts.txt", "r")
         myFont = QFont("MS Shell Dlg 2", 12)
         myFontBold = QFont("MS Shell Dlg 2", 12, QFont.Bold)
-        noPartsOption = QCheckBox("No restorative parts to order.  We will scan the implant digitally.  \n"
-                                  "You can choose from one of our partner Digital Implant Solutions labs \n"
-                                  "to will make the models, custom abutment, and the restoration all \n"
-                                  "according to your instructions.  You can communicate with your lab directly\n")
+        noPartsOption = QCheckBox("No restorative parts to order. We will scan the implant digitally. "
+                                  "You can choose from one of our partner Digital Implant Solutions labs "
+                                  "who will make the models, custom abutment, and the restoration all "
+                                  "according to your instructions. You can communicate with your lab directly.\n")
         noPartsOption.setChecked(True)
         noPartsOption.setFont(myFont)
         noPartsOption.toggled.connect(toggleRestorativeParts)
@@ -604,6 +730,36 @@ class NewImplantForm(QWidget):
             self.osteotomyBox.layout().removeWidget(helpMessage)
             helpMessage.destroy()
 
+    def createGrafts(self):
+        bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+        path_to_dat = os.path.join(bundle_dir, 'data\\materials.txt')
+        with open(path_to_dat, "r") as content:
+            lines = content.readlines()
+
+        self.materials = []
+        self.membranes = []
+
+        for line in lines:
+            parts = line.split("_", 1)
+            if len(parts) < 2:
+                continue
+            if parts[0] == "mat":
+                self.materials.append(parts[1].strip())
+            elif parts[0] == "mem":
+                self.membranes.append(parts[1].strip())
+
+
+        boneMaterialBox = self.graftBox.findChild(QVBoxLayout, "materialBox")
+        boneMembraneBox = self.graftBox.findChild(QVBoxLayout, "membraneBox")
+
+        for mat in self.materials:
+            btn = QRadioButton(mat, font=self.myFont)
+            boneMaterialBox.addWidget(btn)
+
+        for mem in self.membranes:
+            btn = QRadioButton(mem, font=self.myFont)
+            boneMembraneBox.addWidget(btn)
+
     def getIncision(self):
         if not self.incisionBox.isChecked():
             return ""
@@ -614,14 +770,14 @@ class NewImplantForm(QWidget):
         edit2 = self.incisionBox.findChild(QLineEdit, 'incisionEdit2')
 
         if button1.isChecked():
-            teeth = edit1.text().split(",")
-            if len(teeth) > 1:
+            multiple = len(edit1.text().split(",")) > 1 or len(edit1.text().split("-")) > 1
+            if multiple:
                 return "Sulcular incisions were made around teeth #"+edit1.text()+". "
             else:
                 return "Sulcular incisions were made around tooth #" + edit1.text()+". "
         elif button2.isChecked():
-            teeth = edit2.text().split(",")
-            if len(teeth) > 1:
+            multiple = len(edit2.text().split(",")) > 1 or len(edit2.text().split("-")) > 1
+            if multiple:
                 return "A crestal incision was made distal of teeth #" + edit2.text()+". "
             else:
                 return "A crestal incision was made between tooth #" + edit2.text()+". "
@@ -647,27 +803,34 @@ class NewImplantForm(QWidget):
         btn3 = self.extractionBox.findChild(QRadioButton, "extractionButton3")
         btn4 = self.extractionBox.findChild(QRadioButton, "extractionButton4")
 
-        teeth = edit.text().split(",")
+
+        multiple = len(edit.text().split(",")) > 1 or len(edit.text().split("-")) > 1
         txt = ""
-        if len(teeth) > 1:
-            txt += "Teeth "+edit.text()+" were removed via forcep extraction. "
+        if multiple:
             if btn1.isChecked():
+                txt += "Teeth " + edit.text() + " were removed via forcep extraction. "
                 txt += "The sockets were perfectly preserved. "
             elif btn2.isChecked():
+                txt += "Teeth " + edit.text() + " were removed via forcep extraction. "
                 txt += "The sockets were well preserved. "
             elif btn3.isChecked():
+                txt += "Teeth " + edit.text() + " were removed via forcep extraction. "
                 txt += "The sockets were moderately preserved. "
             elif btn4.isChecked():
+                txt += "Teeth " + edit.text() + " were removed via forcep extraction. "
                 txt += "There was damage to the sockets. "
         else:
-            txt += "Tooth " + edit.text() + " was removed via forcep extraction. "
             if btn1.isChecked():
+                txt += "Tooth " + edit.text() + " was removed via forcep extraction. "
                 txt += "The socket was perfectly preserved. "
             elif btn2.isChecked():
+                txt += "Tooth " + edit.text() + " was removed via forcep extraction. "
                 txt += "The socket was well preserved. "
             elif btn3.isChecked():
+                txt += "Tooth " + edit.text() + " was removed via forcep extraction. "
                 txt += "The socket was moderately preserved. "
             elif btn4.isChecked():
+                txt += "Tooth " + edit.text() + " was removed via forcep extraction. "
                 txt += "There was damage to the socket. "
         return txt
 
@@ -681,14 +844,14 @@ class NewImplantForm(QWidget):
         edit2 = self.osteotomyBox.findChild(QLineEdit, 'osteotomyEdit2')
 
         if button1.isChecked():
-            teeth = edit1.text().split(",")
-            if len(teeth) > 1:
+            multiple = len(edit1.text().split(",")) > 1 or len(edit1.text().split("-")) > 1
+            if multiple:
                 return "An osteotomy was prepared in sites #"+edit1.text()+". "
             else:
                 return "An osteotomy was prepared in site #" + edit1.text()+". "
         elif button2.isChecked():
-            teeth = edit2.text().split(",")
-            if len(teeth) > 1:
+            multiple = len(edit1.text().split(",")) > 1 or len(edit1.text().split("-")) > 1
+            if multiple:
                 return "An osteotomy was prepared in sockets #" + edit2.text()+". "
             else:
                 return "An osteotomy was prepared in socket #" + edit2.text()+". "
@@ -722,7 +885,6 @@ class NewImplantForm(QWidget):
                 return opt.text()
         return ""
 
-
     def getSinus(self):
         if not self.sinusBox.isChecked():
             return ""
@@ -750,10 +912,6 @@ class NewImplantForm(QWidget):
                 return opt.text()
         return ""
 
-    # def getCover(self):
-    #     if not self.cove.isChecked():
-    #         return ""
-
     def getHealingCap(self):
         if not self.healingCapBox.isChecked():
             return ""
@@ -765,26 +923,33 @@ class NewImplantForm(QWidget):
 
         if btn1.isChecked():
             return "A cover screw was placed. "
+        elif btn2.isChecked():
+            return "A " + edit.text() + " healing cap was placed for a single stage approach. "
         else:
-            return "A " + edit.text() + " healing cap was placed for a single stage approach."
+            return ""
 
     def getGraft(self):
         if not self.graftBox.isChecked():
             return ""
 
-        boneMaterialBox = self.graftBox.findChild(QGroupBox, "boneMaterialBox")
-        boneMembraneBox = self.graftBox.findChild(QGroupBox, "boneMembraneBox")
+        boneMaterialBox = self.findChild(QGroupBox, "boneMaterialBox")
+        boneMembraneBox = self.findChild(QGroupBox, "boneMembraneBox")
         boneMaterial = ""
         boneMembrane = ""
 
+        optionsChecked = False
         for opt in boneMaterialBox.findChildren(QRadioButton):
             if opt.isChecked():
                 boneMaterial = opt.text()
+                optionsChecked = True
         for opt in boneMembraneBox.findChildren(QRadioButton):
             if opt.isChecked():
                 boneMembrane = opt.text()
-
-        return "The site was grafted with "+boneMaterial+" and covered with a "+boneMembrane+" membrane. "
+                optionsChecked = True
+        if optionsChecked:
+            return "The site was grafted with "+boneMaterial+" and covered with a "+boneMembrane+" membrane. "
+        else:
+            return ""
 
     def generateParagraph(self):
         #print("generating paragraph")
@@ -799,6 +964,8 @@ class NewImplantForm(QWidget):
         txt += self.getTapped()
         txt += self.getSinus()
         txt += self.getSeated()
+        txt += self.getLot()
+        txt += self.getExpiration()
         txt += self.getDepth()
         #txt += self.getCover()
         txt += self.getHealingCap()
@@ -816,9 +983,25 @@ class NewImplantForm(QWidget):
                     txt += opt.text() + "\n"
         return txt
 
-
     def getImplant(self):
+        if len(str(self.implant)) < 3:
+            return ""
+
         return (str(self.implant) + " #"+ str(self.toothNumber.text()))
+
+
+    def getExpiration(self):
+        expDate = self.expirationDate.text()
+        if expDate == QDate.currentDate().toString('M/d/yyyy'):
+            return ""
+        else:
+            return "Expires: " + self.expirationDate.text() + ". "
+
+    def getLot(self):
+        if len(self.lotNumber.text()) < 2:
+            return ""
+        else:
+            return "Lot #" + self.lotNumber.text() + ". "
 
     def getHealingCapList(self):
         if not self.healingCapBox.isChecked():
@@ -831,10 +1014,86 @@ class NewImplantForm(QWidget):
 
         if btn1.isChecked():
             return ""
+        elif btn2.isChecked():
+            return edit.text() + " healing cap #" + str(self.toothNumber.text())
         else:
-            return "A " + edit.text() + " healing cap #" + str(self.toothNumber.text())
+            return ""
+
+    def getImplantDetails(self):
+        if len(str(self.implant)) < 3:
+            return ""
+
+        return (str(self.implant) + " #"+ str(self.toothNumber.text())) + "; "
+
+    def getHealingCapDetails(self):
+        if not self.healingCapBox.isChecked():
+            return ""
+
+        btn1 = self.healingCapBox.findChild(QRadioButton, 'healingCapButton1')
+        btn2 = self.healingCapBox.findChild(QRadioButton, 'healingCapButton2')
+        edit = self.healingCapBox.findChild(QLineEdit, 'healingCapEdit')
 
 
+        if btn1.isChecked():
+            return ""
+        elif btn2.isChecked():
+            return edit.text() + " healing cap; "
+        else:
+            return ""
 
+    def getExtractionDetails(self):
+        if not self.extractionBox.isChecked():
+            return ""
+
+        edit = self.extractionBox.findChild(QLineEdit, "extractionEdit")
+        btn1 = self.extractionBox.findChild(QRadioButton, "extractionButton1")
+        btn2 = self.extractionBox.findChild(QRadioButton, "extractionButton2")
+        btn3 = self.extractionBox.findChild(QRadioButton, "extractionButton3")
+        btn4 = self.extractionBox.findChild(QRadioButton, "extractionButton4")
+
+        txt = ""
+
+        if btn1.isChecked():
+            txt += "The socket was perfectly preserved; "
+        elif btn2.isChecked():
+            txt += "The socket was well preserved; "
+        elif btn3.isChecked():
+            txt += "The socket was moderately preserved; "
+        elif btn4.isChecked():
+            txt += "There was damage to the socket; "
+        return txt
+
+    def getGraftDetails(self):
+        if not self.graftBox.isChecked():
+            return ""
+
+        boneMaterialBox = self.findChild(QGroupBox, "boneMaterialBox")
+        boneMembraneBox = self.findChild(QGroupBox, "boneMembraneBox")
+        boneMaterial = ""
+        boneMembrane = ""
+
+        optionsChecked = False
+        for opt in boneMaterialBox.findChildren(QRadioButton):
+            if opt.isChecked():
+                boneMaterial = opt.text()
+                optionsChecked = True
+        for opt in boneMembraneBox.findChildren(QRadioButton):
+            if opt.isChecked():
+                boneMembrane = opt.text()
+                optionsChecked = True
+        if optionsChecked:
+            return boneMaterial+" and "+boneMembrane+"; "
+        else:
+            return ""
+
+    def getDetails(self):
+        implant = self.getImplantDetails()
+        cap = self.getHealingCapDetails()
+        extraction = self.getExtractionDetails()
+        graft = self.getGraftDetails()
+
+        txt = implant + cap + graft + extraction
+
+        return txt
 
 

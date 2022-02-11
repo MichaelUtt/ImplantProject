@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>803</width>
-    <height>671</height>
+    <width>783</width>
+    <height>705</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,7 +20,20 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">
+QPushButton {
+    background-color: rgb(26, 115, 232);
+	height: 1.5em;
+	
+	font: bold 14pt &quot;Arial&quot;;
+	color: white;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: black;
+    padding: 6px;
+}
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -53,16 +66,16 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-150</y>
-         <width>766</width>
-         <height>1365</height>
+         <y>-377</y>
+         <width>823</width>
+         <height>1053</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="4" column="0">
          <layout class="QGridLayout" name="bottomGrid">
           <item row="0" column="0">
-           <widget class="QGroupBox" name="anestheticBox">
+           <widget class="QGroupBox" name="anestheticGroupBox">
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -81,80 +94,13 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_11">
              <item>
-              <widget class="QRadioButton" name="radioButton_46">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>2% Xylocaine (1:100,000 epi)</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_54">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>2% Xylocaine (1:50,000 epi)</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_49">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>3% Mepivicaine</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_48">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>2% Septicaine</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radioButton_47">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>2% Marcaine</string>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="anestheticBox"/>
              </item>
             </layout>
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QGroupBox" name="prescriptionsBox">
+           <widget class="QGroupBox" name="prescriptionsGroupBox">
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -173,102 +119,7 @@
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <item>
-              <widget class="QCheckBox" name="checkBox_3">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Amoxicillin 500mg; 30 caps; Take 1 cap tid til gone</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_9">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>PenVK 500mg; 30 caps; Take 1 cap tid til gone</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_8">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Cephelexin 500mg; 32 caps; Take 1 cap qid til gone</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_7">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Clindamycin 300mg; 30 caps; Take 1 cap tid til gone</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_6">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Ibuprofen 600mg; 24 tabs; Take 1 tab q6h</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_5">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Norco-5; 24 tabs; Take 1 tab between doses of Ibuprofen prn pain</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QCheckBox" name="checkBox_4">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Norco-5; 24 tabs; Take 1 tab q4-6h prn pain</string>
-               </property>
-              </widget>
+              <layout class="QVBoxLayout" name="prescriptionsBox"/>
              </item>
             </layout>
            </widget>
@@ -358,7 +209,11 @@
            <widget class="QPushButton" name="addXray">
             <property name="font">
              <font>
-              <pointsize>12</pointsize>
+              <family>Arial</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -565,31 +420,7 @@
          </layout>
         </item>
         <item row="5" column="0">
-         <layout class="QGridLayout" name="buttonGrid" rowstretch="0,0,0,0,0">
-          <item row="3" column="0">
-           <widget class="QPushButton" name="printSurgeryReport">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Create Document and Update Excel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="printChartNotesReport">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Update Excel Chart</string>
-            </property>
-           </widget>
-          </item>
+         <layout class="QGridLayout" name="buttonGrid" rowstretch="0,0,0,0">
           <item row="2" column="0">
            <widget class="Line" name="line">
             <property name="font">
@@ -602,6 +433,22 @@
             </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="printSurgeryReport">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>14</pointsize>
+              <weight>75</weight>
+              <italic>false</italic>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Create Report</string>
             </property>
            </widget>
           </item>
@@ -642,239 +489,183 @@
             <property name="checked">
              <bool>true</bool>
             </property>
-            <layout class="QGridLayout" name="gridLayout_8">
-             <property name="horizontalSpacing">
-              <number>6</number>
-             </property>
-             <property name="verticalSpacing">
-              <number>11</number>
-             </property>
-             <item row="0" column="2">
-              <widget class="QLabel" name="restoreOpt1">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Implant can be restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn1</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QRadioButton" name="restoreBtn4">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QGroupBox" name="restoreTopBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
                 </font>
                </property>
-               <property name="text">
+               <property name="title">
                 <string/>
                </property>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QRadioButton" name="restoreBtn1">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>Implant(s) can be restored after &lt;Implant restore date&gt;. </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="restoreBtn2">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>Implant(s) can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;. </string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
-             <item row="2" column="2">
-              <widget class="QLabel" name="restoreOpt3">
+             <item>
+              <widget class="QGroupBox" name="restoreBotBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
                 </font>
                </property>
-               <property name="text">
-                <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn3</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QRadioButton" name="restoreBtn6">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
+               <property name="title">
                 <string/>
                </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QRadioButton" name="restoreBtn3">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QRadioButton" name="restoreBtn1">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="0">
-              <widget class="QRadioButton" name="restoreBtn5">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QRadioButton" name="restoreBtn2">
-               <property name="maximumSize">
-                <size>
-                 <width>13</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                </font>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="2">
-              <widget class="QLabel" name="restoreOpt2">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Implant can be restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn2</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="4" column="2">
-              <widget class="QLabel" name="restoreOpt5">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn5</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="2">
-              <widget class="QLabel" name="restoreOpt4">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Implant can be uncovered after &lt;implant uncovery date&gt; and restored after &lt;Implant restore date&gt;.  For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn4</cstring>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="2">
-              <widget class="QLabel" name="restoreOpt6">
-               <property name="font">
-                <font>
-                 <pointsize>12</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Implant can be uncovered after &lt;implant uncovery date&gt;  restored after &lt;Implant restore date&gt;.  A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor.</string>
-               </property>
-               <property name="wordWrap">
-                <bool>true</bool>
-               </property>
-               <property name="buddy">
-                <cstring>restoreBtn6</cstring>
-               </property>
+               <layout class="QGridLayout" name="gridLayout">
+                <property name="verticalSpacing">
+                 <number>10</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QRadioButton" name="restoreBtn3">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QRadioButton" name="restoreBtn4">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QRadioButton" name="restoreBtn5">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLabel" name="restoreOpt5">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>A screw retained restoration should be possible using the Zimmer angled screw channel (Certain BellaTek Express &amp; Flex abutments).  This is, of course, at the discretion of the restoring doctor. </string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buddy">
+                   <cstring>restoreBtn5</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLabel" name="restoreOpt4">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>A screw retained restoration should be possible using the NobelBiocare Angled Screw Channel.  This is, of course, at the discretion of the restoring doctor. </string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buddy">
+                   <cstring>restoreBtn4</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="restoreOpt3">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>For posterior implants with a good path of draw we recommend screw retained restorations.  </string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                  <property name="buddy">
+                   <cstring>restoreBtn3</cstring>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
@@ -918,7 +709,11 @@
          <widget class="QPushButton" name="addImplantYes">
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <family>Arial</family>
+            <pointsize>14</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
            </font>
           </property>
           <property name="text">

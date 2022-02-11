@@ -1,8 +1,9 @@
 import os.path
 import sys
 
+import psutil
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QPushButton, QFileDialog, QMainWindow
+from PyQt5.QtWidgets import QPushButton, QFileDialog, QMainWindow, QMessageBox
 from PyQt5 import uic
 
 from . import createReport, createImplant, createDoctor, createPart, viewAllReports, contactPage, createMenu
@@ -40,8 +41,8 @@ class HomePage(QMainWindow):
         self.helpButton = self.findChild(QPushButton, "helpButton")
         self.helpButton.clicked.connect(self.getHelp)
 
-        self.viewPage = viewAllReports.ViewPage()
-        self.viewPage.hide()
+        # self.viewPage = viewAllReports.ViewPage()
+        # self.viewPage.hide()
         self.helpPage = contactPage.HelpPage()
         self.helpPage.hide()
 
@@ -70,11 +71,31 @@ class HomePage(QMainWindow):
         self.hide()
 
     def viewReportsPage(self):
-        if not self.viewPage.isVisible():
-            self.viewPage.show()
-            self.viewPage.generateTable()
+        if "EXCEL.EXE" in (p.name() for p in psutil.process_iter()):
+            error_dialog = QMessageBox()
+            error_dialog.setWindowTitle("Error")
+            error_dialog.setText('The Excel File is already open. Cannot open file. ')
+            error_dialog.exec_()
+            return
         else:
-            self.viewPage.hide()
+            with open("data/fileLocations.txt", "r") as content:
+                lines = content.readlines()
+            excelFile = lines[2][6:].strip()
+            if len(excelFile) < 3:
+                error_dialog = QMessageBox()
+                error_dialog.setWindowTitle("Select File")
+                error_dialog.setText("Select an Excel File. ")
+                error_dialog.exec_()
+                self.setDefaultExcel()
+                with open("data/fileLocations.txt", "r") as content:
+                    lines = content.readlines()
+                excelFile = lines[2][6:].strip()
+            os.startfile(excelFile)
+        # if not self.viewPage.isVisible():
+        #     self.viewPage.show()
+        #     self.viewPage.generateTable()
+        # else:
+        #     self.viewPage.hide()
 
     def setDefaultFolder(self):
 
@@ -89,9 +110,9 @@ class HomePage(QMainWindow):
             try:
                 file = str(QFileDialog.getExistingDirectory(self, "Select Directory", dir, QFileDialog.ShowDirsOnly))
             except:
-                file = str(QFileDialog.getExistingDirectory(self, "Select Directory", QFileDialog.ShowDirsOnly))
+                file = str(QFileDialog.getExistingDirectory(self, "Select Directory", options=QFileDialog.ShowDirsOnly))
         else:
-            file = str(QFileDialog.getExistingDirectory(self, "Select Directory", QFileDialog.ShowDirsOnly))
+            file = str(QFileDialog.getExistingDirectory(self, "Select Directory", options=QFileDialog.ShowDirsOnly))
 
         if len(file) < 2:
             return
@@ -106,7 +127,7 @@ class HomePage(QMainWindow):
 
         bundle_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
         path_to_dat = os.path.join(bundle_dir, 'data\\fileLocations.txt')
-        print(path_to_dat)
+        # print(path_to_dat)
         with open(path_to_dat, "r") as content:
             lines = content.readlines()
 
@@ -116,9 +137,10 @@ class HomePage(QMainWindow):
                 lastDir = os.path.dirname(path)
                 file = QFileDialog.getOpenFileName(self, 'Open Excel', lastDir, "Microsoft Excel files (*.xlsx)")
             except:
-                file = QFileDialog.getOpenFileName(self, 'Open Excel', "Microsoft Excel files (*.xlsx)")
+                file = QFileDialog.getOpenFileName(self, 'Open Excel', filter="Microsoft Excel files (*.xlsx)")
         else:
-            file = QFileDialog.getOpenFileName(self, 'Open Excel', "Microsoft Excel files (*.xlsx)")
+            file = QFileDialog.getOpenFileName(self, 'Open Excel', filter="Microsoft Excel files (*.xlsx)")
+
 
         if len(file[0]) < 2:
             return
